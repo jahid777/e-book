@@ -7,11 +7,11 @@ function App() {
   return (
     <Router>
       <Switch>
-        <Route exact path="/">
+        {/* <Route exact path="/">
           <Home />
-        </Route>
+        </Route> */}
 
-        <Route exact path="/qr">
+        <Route exact path="/">
           <Qr />
         </Route>
       </Switch>
