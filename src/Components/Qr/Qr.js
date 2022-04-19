@@ -19,14 +19,14 @@ const Qr = () => {
   const classes = useStyles();
   const qrRef = useRef(null);
 
-  const generateQrCode = async () => {
-    try {
-      const response = await QRCode.toDataURL(text);
-      setImageUrl(response);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  //   const generateQrCode = async () => {
+  //     try {
+  //       const response = await QRCode.toDataURL(text);
+  //       setImageUrl(response);
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   };
   const handleErrorFile = (error) => {
     console.log(error);
   };
@@ -49,61 +49,22 @@ const Qr = () => {
   return (
     <Container className={classes.conatiner}>
       <Card>
-        <h2 className={classes.title}>
-          Generate Download & Scan QR Code with React js
-        </h2>
+        <h2 className={classes.title}>Scan QR Code Login (Ebook)</h2>
         <CardContent>
           <Grid container spacing={2}>
             <Grid item xl={4} lg={4} md={6} sm={12} xs={12}>
-              <TextField
-                label="Enter Text Here"
-                onChange={(e) => setText(e.target.value)}
-              />
-              <Button
-                className={classes.btn}
-                variant="contained"
-                color="primary"
-                onClick={() => generateQrCode()}
-              >
-                Generate
-              </Button>
-              <br />
-              <br />
-              <br />
-              {imageUrl ? (
-                <a href={imageUrl} download>
-                  <img src={imageUrl} alt="img" />
-                </a>
-              ) : null}
-            </Grid>
-            <Grid item xl={4} lg={4} md={6} sm={12} xs={12}>
-              <Button
-                className={classes.btn}
-                variant="contained"
-                color="secondary"
-                onClick={onScanFile}
-              >
-                Scan Qr Code
-              </Button>
-              <QrReader
-                ref={qrRef}
-                delay={300}
-                style={{ width: "100%" }}
-                onError={handleErrorFile}
-                onScan={handleScanFile}
-                legacyMode
-              />
-              <h3>Scanned Code: {scanResultFile}</h3>
-            </Grid>
-            <Grid item xl={4} lg={4} md={6} sm={12} xs={12}>
-              <h3>Qr Code Scan by Web Cam</h3>
+              <h3 style={{ marginBottom: "10px" }}>
+                Qr Code Scan by Web Cam EBOOk
+              </h3>
               <QrReader
                 delay={300}
                 style={{ width: "100%" }}
                 onError={handleErrorWebCam}
                 onScan={handleScanWebCam}
               />
-              <h3>Scanned By WebCam Code: {scanResultWebCam}</h3>
+              <h1 style={{ marginTop: "20px" }}>
+                Scanned By WebCam Code: {scanResultWebCam}
+              </h1>
             </Grid>
           </Grid>
         </CardContent>
