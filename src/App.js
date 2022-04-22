@@ -11,7 +11,7 @@ function App() {
           <Home />
         </Route>
 
-        <Route exact path="/">
+        <Route path="/qr">
           <Qr />
         </Route>
       </Switch>
