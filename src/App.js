@@ -7,9 +7,9 @@ function App() {
   return (
     <Router>
       <Switch>
-        {/* <Route exact path="/">
+        <Route exact path="/">
           <Home />
-        </Route> */}
+        </Route>
 
         <Route exact path="/">
           <Qr />
