@@ -5,20 +5,14 @@ import {
   CardContent,
   makeStyles,
   Grid,
-  TextField,
-  Button,
 } from "@material-ui/core";
 import QrReader from "react-qr-reader";
 
 const Qr = () => {
-  const [scanResultFile, setScanResultFile] = useState("");
   const [scanResultWebCam, setScanResultWebCam] = useState("");
   const classes = useStyles();
   const qrRef = useRef(null);
 
-  const onScanFile = () => {
-    qrRef.current.openImageDialog();
-  };
   const handleErrorWebCam = (error) => {
     console.log(error);
   };
