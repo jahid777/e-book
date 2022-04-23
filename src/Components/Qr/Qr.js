@@ -1,12 +1,12 @@
 import React, { useState, useRef } from "react";
 import QrReader from "react-qr-reader";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import "./Qr.css";
 
 const Qr = () => {
   const [scanResultWebCam, setScanResultWebCam] = useState("");
   const [display, setDisply] = useState(false);
-
-  console.log(display, "here");
+  const history = useHistory();
 
   const handleErrorWebCam = (error) => {
     console.log(error);
@@ -16,9 +16,14 @@ const Qr = () => {
       setScanResultWebCam(result);
     }
   };
+
+  const data = "FvjfsmsvVsbHsbJsban";
+  if (scanResultWebCam == data) {
+    history.push("/home");
+  }
   return (
     <div>
-      <div className="qr-main-section row">
+      <div className="qr-main-section row container-fluid">
         {display && (
           <div className="col-md-3">
             <QrReader
@@ -30,7 +35,7 @@ const Qr = () => {
           </div>
         )}
       </div>
-      <div style={{ textAlign: "center" }}>
+      <div className="scen-button">
         <button
           className="btn btn-primary mt-5"
           onClick={() => setDisply(!display)}

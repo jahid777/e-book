@@ -8,11 +8,11 @@ function App() {
     <Router>
       <Switch>
         <Route exact path="/">
-          <Home />
+          <Qr />
         </Route>
 
-        <Route path="/qr">
-          <Qr />
+        <Route path="/home">
+          <Home />
         </Route>
       </Switch>
     </Router>

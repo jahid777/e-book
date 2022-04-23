@@ -2,3 +2,6 @@
   display: flex !important;
   justify-content: center !important;
 }
+.scen-button {
+  text-align: center !important;
+}
