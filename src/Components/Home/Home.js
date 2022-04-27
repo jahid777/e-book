@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import QrReader from "react-qr-reader";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import "./home.css";
@@ -21,10 +21,12 @@ const Home = () => {
   };
 
   const data = "FvjfsmsvVsbHsbJsban";
-  if (scanResultWebCam || finalInputData == data) {
-    sessionStorage.setItem("token", data);
-    history.push("/termsCondition");
-  }
+  useEffect(() => {
+    if (scanResultWebCam || finalInputData == data) {
+      sessionStorage.setItem("token", data);
+      history.push("/termsCondition");
+    }
+  }, [finalInputData, history, scanResultWebCam]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -58,7 +60,7 @@ const Home = () => {
       </div>
 
       <form onSubmit={handleSubmit}>
-        <div class="input-group container mt-5">
+        <div className="input-group container mt-5">
           <input
             type="text"
             className="form-control"
