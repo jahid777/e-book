@@ -1,7 +1,56 @@
+.headImg {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
 .qr-main-section {
   display: flex !important;
   justify-content: center !important;
+  margin: 20px 0;
 }
-.scen-button {
+.scan-button {
   text-align: center !important;
+  margin-bottom: 30px;
+}
+.loginForm {
+  padding: 0 30%;
+}
+.loginInput:focus {
+  box-shadow: none;
+}
+
+.midImg {
+  width: 100%;
+  height: auto;
+}
+.disclaimer {
+  text-align: center !important;
+  border: 1px solid #000;
+}
+.disclaimerHeader {
+  font-size: 20px;
+  color: #000000;
+  font-weight: bold !important;
+}
+.disclaimer_li {
+  margin: 10px 0 !important;
+}
+.disclaimer_seeMore {
+  border: 1px solid #000;
+  padding: 5px;
+  color: #000000;
+  text-decoration: none;
+}
+
+@media only screen and (max-width: 900px) {
+  .loginForm {
+    display: none;
+  }
+}
+
+@media only screen and (min-width: 900px) {
+  .scan-button,
+  .qr-main-section {
+    display: none !important;
+  }
 }

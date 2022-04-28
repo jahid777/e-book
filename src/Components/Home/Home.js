@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import QrReader from "react-qr-reader";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import "./home.css";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   const [scanResultWebCam, setScanResultWebCam] = useState("");
@@ -37,7 +38,15 @@ const Home = () => {
   };
 
   return (
-    <div>
+    <section>
+      <div className="homeHead">
+        <img
+          src="https://i.ibb.co/P90bHQx/E-Book.webp"
+          alt=""
+          className="headImg"
+        />
+      </div>
+      {/* Camera */}
       <div className="qr-main-section row container-fluid">
         {display && (
           <div className="col-md-3">
@@ -50,42 +59,74 @@ const Home = () => {
           </div>
         )}
       </div>
-      <div className="scen-button">
-        <button
-          className="btn btn-primary mt-5"
-          onClick={() => setDisply(!display)}
-        >
+      {/* Button */}
+      <div className="scan-button">
+        <button className="btn btn-success" onClick={() => setDisply(!display)}>
           SCEN BY QR CODE{" "}
         </button>
       </div>
-
-      <form onSubmit={handleSubmit}>
-        <div className="input-group container mt-5">
+      {/* Login input */}
+      <form onSubmit={handleSubmit} className="loginForm my-5">
+        <div className="input-group">
           <input
             type="text"
-            className="form-control"
-            placeholder="Recipient's username"
+            className="form-control loginInput"
+            placeholder="Enter Your Password"
             aria-label="Recipient's username"
             aria-describedby="button-addon2"
             onChange={(e) => setInputData(e.target.value)}
           />
-          <button className="btn btn-primary" type="submit">
+          <button className="btn btn-success" type="submit">
             SUBMIT
           </button>
         </div>
       </form>
       {errorMessage && <h1>INVALID PASSWORD</h1>}
-    </div>
+
+      <div className="homeMiddleImg">
+        <img
+          src="https://m.media-amazon.com/images/I/61jovjd+f9L._SX3000_.jpg"
+          alt=""
+          className="midImg"
+        />
+      </div>
+      <div className="disclaimer my-5">
+        <span className="disclaimerHeader">Disclaimer</span>
+        <span className="disclaimerBody">
+          <ol>
+            <li className="disclaimer_li">
+              Lorem Ipsum is simply dummy text of the printing and typesetting
+              industry. Lorem Ipsum has been the industry's standard dummy text
+              ever since the 1500s.
+            </li>
+            <li className="disclaimer_li">
+              Lorem Ipsum is simply dummy text of the printing and typesetting
+              industry. Lorem Ipsum has been the industry's standard dummy text
+              ever since the 1500s.
+            </li>
+            <li className="disclaimer_li">
+              Lorem Ipsum is simply dummy text of the printing and typesetting
+              industry. Lorem Ipsum has been the industry's standard dummy text
+              ever since the 1500s.
+            </li>
+            <li className="disclaimer_li">
+              Lorem Ipsum is simply dummy text of the printing and typesetting
+              industry. Lorem Ipsum has been the industry's standard dummy text
+              ever since the 1500s.
+            </li>
+            <li className="disclaimer_li">
+              Lorem Ipsum is simply dummy text of the printing and typesetting
+              industry. Lorem Ipsum has been the industry's standard dummy text
+              ever since the 1500s.
+            </li>
+            <Link to="/" className="disclaimer_seeMore">
+              See More......
+            </Link>
+          </ol>
+        </span>
+      </div>
+    </section>
   );
 };
 
 export default Home;
-
-// <input
-//           type="text"
-//           className="form-control container mt-5"
-//           onChange={(e) => setInputData(e.target.value)}
-//         />
-//         <button className="btn btn-primary" type="submit">
-//           Submit
-//         </button>
