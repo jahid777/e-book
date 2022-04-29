@@ -81,7 +81,7 @@ const Home = () => {
           </button>
         </div>
       </form>
-      {errorMessage && <h1>INVALID PASSWORD</h1>}
+      {errorMessage && <h1 className="errorMessage">INVALID PASSWORD!</h1>}
 
       <div className="homeMiddleImg">
         <img
