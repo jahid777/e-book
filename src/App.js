@@ -2,8 +2,8 @@ import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import AddBook from "./Components/AddData/AddBook";
 import AdminLogin from "./Components/Admin/AdminLogin";
+import BookDisplay from "./Components/Display/BookDisplay";
 import TermsConditionEdit from "./Components/EditData/TermsConditionEdit";
-
 import Home from "./Components/Home/Home";
 import PrivateRoute from "./Components/PrivateRoute/PrivateRoute";
 import TermsCondition from "./Components/TermsCondition/TermsCondition";
@@ -21,12 +21,14 @@ function App() {
         <PrivateRoute path="/addBook">
           <AddBook />
         </PrivateRoute>
-        TermsConditionEdit
         <Route path="/termsConditionEdit">
           <TermsConditionEdit />
         </Route>
         <Route path="/adminLogin">
           <AdminLogin />
+        </Route>
+        <Route path="/book-list">
+          <BookDisplay />
         </Route>
       </Switch>
     </Router>
