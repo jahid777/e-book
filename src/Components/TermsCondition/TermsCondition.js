@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import "./TermsCondition.css";
+import ReactHtmlParser from "react-html-parser";
 
 const TermsCondition = () => {
   const history = useHistory();
@@ -42,7 +43,7 @@ const TermsCondition = () => {
 
   return (
     <div className="container-fluid">
-      <h1 className="text-center mt-5 termsAndConditionHead">WELCOME!</h1>
+      <h1 className="text-center mt-5 termsAndConditionHead mb-5">WELCOME!</h1>
       <div className="form-check agreeCheckbox">
         <input
           className="form-check-input"
@@ -88,9 +89,9 @@ const TermsCondition = () => {
               ></button>
             </div>
             <div className="modal-body">
-              {description?.map((dsData) => (
-                <p key={dsData._id}>{dsData?.description}</p>
-              ))}
+              {description?.map((dsData) =>
+                ReactHtmlParser(dsData?.description)
+              )}
             </div>
           </div>
         </div>
