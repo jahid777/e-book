@@ -1,11 +1,6 @@
 @import url("https://fonts.googleapis.com/css?family=Raleway:400,700");
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-family: Raleway, sans-serif;
-}
+/* Login Page */
 .loginBody {
   display: flex;
   align-items: center;
@@ -136,4 +131,31 @@
 .login__submit:hover {
   border-color: var(--violate);
   outline: none;
+}
+
+
+/* Admin Dashboard */
+
+.adminPage{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: var(--green);
+  height: 100vh;
+  overflow-y: hidden;
+}
+.adminPageHeader{
+  border-bottom: 1px solid #000;
+}
+.edit__Pages{
+text-decoration: none;
+color: #000;
+border: 1px solid var(--green);
+padding: 10px 20px;
+margin: 10px 0;
+}
+.edit__Pages:hover{
+  background-color: var(--lightgreen);
+  color: #fff;
 }

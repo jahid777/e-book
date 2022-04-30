@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import AddBook from "./Components/AddData/AddBook";
 import AdminLogin from "./Components/Admin/AdminLogin";
+import AdminPage from "./Components/Admin/AdminPage";
 import BookDisplay from "./Components/Display/BookDisplay";
 import TermsConditionEdit from "./Components/EditData/TermsConditionEdit";
 import Home from "./Components/Home/Home";
@@ -26,6 +27,9 @@ function App() {
         </Route>
         <Route path="/adminLogin">
           <AdminLogin />
+        </Route>
+        <Route path="/dashboard">
+          <AdminPage />
         </Route>
         <Route path="/book-list">
           <BookDisplay />
