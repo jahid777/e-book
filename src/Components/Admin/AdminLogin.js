@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Admin.css";
 import { useHistory } from "react-router-dom";
 
@@ -8,16 +8,24 @@ const AdminLogin = () => {
   const [errorMsg, setErrorMsg] = useState(false);
   const history = useHistory();
 
-  const emaildata = "kawsar@gmail.com";
-  const passData = "AdminKawsar123";
+  const emaildata = "admin@gmail.com";
+  const passData = "123";
   const handleAdminSubmit = (e) => {
     e.preventDefault();
+    // if (adminEmail === emaildata && adminPass === passData) {
+    //   history.push("/dashboard");
+    // } else {
+    //
+    // }
     if (adminEmail === emaildata && adminPass === passData) {
+      sessionStorage.setItem("emailToken", emaildata);
+      sessionStorage.setItem("passToken", passData);
       history.push("/dashboard");
     } else {
       setErrorMsg(true);
     }
   };
+
   return (
     <div className="loginBody">
       <div className="screen">
@@ -49,7 +57,7 @@ const AdminLogin = () => {
           </form>
           {errorMsg && (
             <div className="alert alert-danger text-center" role="alert">
-              Wrong Credentials..!
+              <strong>Wrong Credentials..!</strong>
             </div>
           )}
         </div>

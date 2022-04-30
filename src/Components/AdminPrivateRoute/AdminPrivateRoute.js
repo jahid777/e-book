@@ -3,18 +3,19 @@ import { Redirect, Route } from "react-router-dom";
 
 const AdminPrivateRoute = ({ children, ...rest }) => {
   //   const isLoggedIn = () => {
-  const token = sessionStorage.getItem("token");
+  const token1 = sessionStorage.getItem("emailToken");
+  const token2 = sessionStorage.getItem("passToken");
   //   };
   return (
     <Route
       {...rest}
       render={({ location }) =>
-        token ? (
+        token1 && token2 ? (
           children
         ) : (
           <Redirect
             to={{
-              pathname: "/",
+              pathname: "/adminLogin",
               state: { from: location },
             }}
           />

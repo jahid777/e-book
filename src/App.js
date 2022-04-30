@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import AddBook from "./Components/AddData/AddBook";
 import AdminLogin from "./Components/Admin/AdminLogin";
 import AdminPage from "./Components/Admin/AdminPage";
+import AdminPrivateRoute from "./Components/AdminPrivateRoute/AdminPrivateRoute";
 import BookDisplay from "./Components/Display/BookDisplay";
 import TermsConditionEdit from "./Components/EditData/TermsConditionEdit";
 import Home from "./Components/Home/Home";
@@ -28,9 +29,9 @@ function App() {
         <Route path="/adminLogin">
           <AdminLogin />
         </Route>
-        <Route path="/dashboard">
+        <AdminPrivateRoute path="/dashboard">
           <AdminPage />
-        </Route>
+        </AdminPrivateRoute>
         <Route path="/book-list">
           <BookDisplay />
         </Route>
