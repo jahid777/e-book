@@ -1,3 +1,8 @@
+:root{
+  --green: #278d4b79;
+  --lightgreen: #3ae374;
+}
+
 * {
   margin: 0;
   padding: 0;

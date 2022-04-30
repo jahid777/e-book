@@ -3,8 +3,8 @@ import "./AdminLogin.css";
 
 const AdminLogin = () => {
   return (
-    <div>
-      <div className="container">
+    
+      <div className="loginBody">
         <div className="screen">
           <div className="screen__content">
             <form className="login">
@@ -26,10 +26,6 @@ const AdminLogin = () => {
               </div>
               <button className="button login__submit">
                 <span className="button__text">Log In Now</span>
-                <i className="button__icon fas fa-chevron-right"></i>
-              </button>
-              <button style={{ display: "flex", justifyContent: "center" }}>
-                SUBMIT
               </button>
             </form>
           </div>
@@ -41,7 +37,7 @@ const AdminLogin = () => {
           </div>
         </div>
       </div>
-    </div>
+    
   );
 };
 
