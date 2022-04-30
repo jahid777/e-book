@@ -9,7 +9,7 @@ const AdminLogin = () => {
           <div className="screen__content">
             <form className="login">
               <div className="login__field">
-                <i className="login__icon fas fa-user"></i>
+                
                 <input
                   type="text"
                   className="login__input"
@@ -17,7 +17,7 @@ const AdminLogin = () => {
                 />
               </div>
               <div className="login__field">
-                <i className="login__icon fas fa-lock"></i>
+                
                 <input
                   type="password"
                   className="login__input"

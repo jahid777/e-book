@@ -91,11 +91,6 @@
   position: relative;
 }
 
-.login__icon {
-  position: absolute;
-  top: 30px;
-  color: #7875b5;
-}
 
 .login__input {
   border: none;
@@ -128,8 +123,8 @@
   display: flex;
   align-items: center;
   width: 280px;
-  color: #4c489d;
-  box-shadow: 0px 2px 2px #5c5696;
+  color: var(--violate);
+  box-shadow: 0px 2px 2px var(--violate);
   cursor: pointer;
   transition: 0.2s;
   display: flex;
@@ -139,13 +134,6 @@
 .login__submit:active,
 .login__submit:focus,
 .login__submit:hover {
-  border-color: #6a679e;
+  border-color: var(--violate);
   outline: none;
-}
-
-
-.button__icon {
-  font-size: 24px;
-  margin-left: auto;
-  color: #7875b5;
 }
