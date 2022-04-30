@@ -69,6 +69,7 @@ const Home = () => {
       <form onSubmit={handleSubmit} className="loginForm my-5">
         <div className="input-group">
           <input
+            required
             type="text"
             className="form-control loginInput"
             placeholder="Enter Your Password"
