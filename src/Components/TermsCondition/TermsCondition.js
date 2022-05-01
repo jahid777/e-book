@@ -19,7 +19,7 @@ const TermsCondition = () => {
   //redirect add book page
   const handleAgreBtn = () => {
     setTimeout(() => {
-      history.push("/book-list");
+      history.push("/books");
     }, 150);
   };
 

@@ -14,7 +14,7 @@ const AdminPage = () => {
   return (
     <section className="adminPage">
       <h2 className="adminPageHeader">Your Dashboard</h2>
-      <Link to="/" className="edit__Pages">
+      <Link to="/book-list" className="edit__Pages">
         Book List
       </Link>
       <Link to="/addBook" className="edit__Pages">

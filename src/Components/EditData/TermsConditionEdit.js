@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
+import { Link } from "react-router-dom";
 import "./TermsConditionEdit.css";
 
 const TermsConditionEdit = () => {
@@ -28,19 +29,9 @@ const TermsConditionEdit = () => {
 
   return (
     <div className="p-4">
-      <h1 className="text-center">TERMS AND CONDITON</h1>
-      {/* <form onSubmit={handleTermsSubmit}>
-        <textarea ref={termsRef} />
-
-        <button type="submit">SUBMIT</button>
-      </form> */}
+    <Link to="/dashboard" className="back"> <i className="bi bi-skip-backward-fill"></i> Back </Link>
+      <h1 className="text-center">TERMS AND CONDITON</h1>      
       <form onSubmit={handleTermsSubmit}>
-        {/* product Full description */}
-        {/* <div>
-          <label htmlFor="description" className="form-label">
-            Full Description
-          </label>
-        </div> */}
 
         <div>
           <ReactQuill

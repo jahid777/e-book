@@ -5,6 +5,7 @@ import AdminLogin from "./Components/Admin/AdminLogin";
 import AdminPage from "./Components/Admin/AdminPage";
 import AdminPrivateRoute from "./Components/AdminPrivateRoute/AdminPrivateRoute";
 import BookDisplay from "./Components/Display/BookDisplay";
+import Booklist from "./Components/EditData/BookList";
 import TermsConditionEdit from "./Components/EditData/TermsConditionEdit";
 import Home from "./Components/Home/Home";
 import PrivateRoute from "./Components/PrivateRoute/PrivateRoute";
@@ -32,7 +33,10 @@ function App() {
         <AdminPrivateRoute path="/dashboard">
           <AdminPage />
         </AdminPrivateRoute>
-        <Route path="/book-list">
+        <AdminPrivateRoute path="/book-list">
+          <Booklist />
+        </AdminPrivateRoute>
+        <Route path="/books">
           <BookDisplay />
         </Route>
       </Switch>

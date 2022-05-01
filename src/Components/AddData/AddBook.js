@@ -1,11 +1,13 @@
 import React from "react";
 import "./AddBook.css";
+import { Link } from "react-router-dom";
 const AddBook = () => {
   return (
-    <main className="bookupload">
-        <section className="container">      
+    <main className="bookupload">  
+        <section className="container">
+        <Link to="/dashboard" className="back"> <i className="bi bi-skip-backward-fill"></i> Back </Link>
             <div className="row">
-                <h5 className="text-center">Upload Your Book</h5>
+                <h2 className="text-center text-bold">Upload Your Book</h2>
                 <div className="col-12 col-md-2"></div>
                 <form className="col-12 col-md-8 bookInputForm">
                     <div className="mb-3 bookImgInput">

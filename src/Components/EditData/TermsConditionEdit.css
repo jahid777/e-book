@@ -10,3 +10,7 @@
       width: 1000px;
       height: 50px;
   }
+  .back{
+    text-decoration: none;
+    color: #000;
+  }
