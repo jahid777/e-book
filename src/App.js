@@ -23,9 +23,9 @@ function App() {
         <PrivateRoute path="/addBook">
           <AddBook />
         </PrivateRoute>
-        <Route path="/termsConditionEdit">
+        <PrivateRoute path="/termsConditionEdit">
           <TermsConditionEdit />
-        </Route>
+        </PrivateRoute>
         <Route path="/adminLogin">
           <AdminLogin />
         </Route>

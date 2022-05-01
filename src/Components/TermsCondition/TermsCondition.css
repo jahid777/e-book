@@ -8,8 +8,9 @@
     
 }
 .form-check-input{
-    height: 50px !important;
-    width: 50px !important;
+    height: 25px !important;
+    width: 25px !important;
+    border: 1px solid #000;
 }
 .form-check-input:checked{
     background: green;

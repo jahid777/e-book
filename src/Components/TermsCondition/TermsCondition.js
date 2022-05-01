@@ -19,7 +19,7 @@ const TermsCondition = () => {
   //redirect add book page
   const handleAgreBtn = () => {
     setTimeout(() => {
-      history.push("/addBook");
+      history.push("/book-list");
     }, 150);
   };
 
@@ -43,7 +43,7 @@ const TermsCondition = () => {
 
   return (
     <div className="container-fluid">
-      <h1 className="text-center mt-5 termsAndConditionHead mb-5">WELCOME!</h1>
+      <h1 className="text-center termsAndConditionHead my-5">WELCOME!</h1>
       <div className="form-check agreeCheckbox">
         <input
           className="form-check-input"

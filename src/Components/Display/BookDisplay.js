@@ -12,18 +12,34 @@ const BookDisplay = () => {
         />
       </section>
       <section className="container-fluid book_display_body my-3">
-        <div className="srarch_section d-flex justify-content-center">
-          <input
-            type="text"
-            className="searchbar"
-            placeholder="Search book name, authoe name, isbm....."
-          />
-          <button type="submit" className="btn search_btn">
-            Search
-          </button>
-        </div>
-        <div className="book_display_main row my-5">
-          <div className="col-12 col-md-10">
+        <form className="search__filter">
+          <div className="srarch_section d-flex justify-content-center">
+            <input
+              type="text"
+              className="searchbar"
+              placeholder="Search book name, authoe name, isbm....."
+            />
+            <button type="submit" className="btn search_btn">
+              Search
+            </button>
+          </div>
+          <div className="sideFilter my-4">
+            <span className="radioSearch">              
+              <input type="radio" id="book_name" name="search" value="Book Name" />
+              <label for="book_name">Book Name</label>
+            </span>
+            <span className="radioSearch">
+              <input type="radio" id="author_name" name="search" value="Author Name" />
+              <label for="author_name">Author Name</label>
+            </span>
+            <span className="radioSearch">
+              <input type="radio" id="isbn" name="search" value="ISBN Number" />
+              <label for="isbn">ISBN Number</label>
+            </span>       
+          </div>
+        </form>
+        <div className="book_display_main my-3">
+          
             <div className="row bookRow">
               <div className="col-12 col-md-4 book_card mb-2">
                 <img src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.anilaggrawal.com%2Fij%2Fvol_013_no_001%2Freviews%2Ftb%2Fbook002%2Fcover.jpg&f=1&nofb=1" alt="" className="bookImage" />
@@ -70,23 +86,7 @@ const BookDisplay = () => {
                   </aside>
                 </div>
               </div>
-            </div>
-          </div>
-          <div className="col-12 col-md-2 sideFilter">
-            <span>Filter By</span>
-            <ul className="my-3">
-              <b>Author Name:</b>
-              <li>Willium henry</li>
-              <li>Jackob Orum</li>
-              <li>Vladimir Putin</li>
-            </ul>
-            <ul className="my-3">
-              <b>ISBM:</b>
-              <li>Peracitamol</li>
-              <li>Azithromicine</li>
-              <li>PPI</li>
-            </ul>
-          </div>
+            </div>          
         </div>
       </section>
     </main>

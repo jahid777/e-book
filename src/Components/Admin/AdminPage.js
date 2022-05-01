@@ -5,7 +5,7 @@ import "./Admin.css";
 const AdminPage = () => {
   const history = useHistory();
 
-  // logout and clear the session stroage for admin
+  // logout and clear the session storage for admin
   const handleLogout = () => {
     sessionStorage.setItem("emailToken", "");
     sessionStorage.setItem("passToken", "");
@@ -17,13 +17,13 @@ const AdminPage = () => {
       <Link to="/" className="edit__Pages">
         Book List
       </Link>
-      <Link to="/" className="edit__Pages">
+      <Link to="/addBook" className="edit__Pages">
         Book Add
       </Link>
       <Link to="/" className="edit__Pages">
         Front-Page Edit
       </Link>
-      <Link to="/" className="edit__Pages">
+      <Link to="/termsConditionEdit" className="edit__Pages">
         Terms and Condition Edit
       </Link>
       <Link to="/" className="edit__Pages">
