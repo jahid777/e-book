@@ -100,11 +100,6 @@ const Home = () => {
   return (
     <section>
       <div className="homeHead">
-        {/* <img
-          src="https://i.ibb.co/P90bHQx/E-Book.webp"
-          alt=""
-          className="headImg"
-        /> */}
         {topImg?.map((dt, index) => (
           <span key={index}>
             <img src={dt.topImage} alt="loading" className="headImg" />

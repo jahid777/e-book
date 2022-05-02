@@ -6,7 +6,7 @@ const FrontPageEdit = () => {
   const topImgRef = useRef();
   const middleImgRef = useRef();
   const [disclaimer, setDisclaimer] = useState("");
-  const [suceesMsg, setSuccessMsg] = useState("");
+  const [suceesMsg, setSuccessMsg] = useState(false);
 
   //top banner submission
   const handleTopBannerSubmit = () => {
