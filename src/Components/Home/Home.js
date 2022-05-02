@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import QrReader from "react-qr-reader";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import "./home.css";
+import ReactHtmlParser from "react-html-parser";
 import { Link } from "react-router-dom";
 
 const Home = () => {
@@ -11,6 +12,10 @@ const Home = () => {
   const [finalInputData, setFinalInputData] = useState("");
   const [errorMessage, setErrorMessage] = useState(false);
   const history = useHistory();
+  const [topImg, setTopImg] = useState([""]);
+  const [midImg, setMidImg] = useState([""]);
+  const [disclaimer, setDisclaimer] = useState([""]);
+  const [loading, setLoading] = useState(false);
 
   const handleErrorWebCam = (error) => {
     console.log(error);
@@ -22,6 +27,7 @@ const Home = () => {
   };
 
   const data = "FvjfsmsvVsbHsbJsban";
+  //for login system
   useEffect(() => {
     if (scanResultWebCam || finalInputData == data) {
       sessionStorage.setItem("token", data);
@@ -37,14 +43,73 @@ const Home = () => {
     }
   };
 
+  //getting top img form server
+  useEffect(() => {
+    const fetchProduct = async () => {
+      try {
+        setLoading(true);
+        const response = await fetch(
+          "http://localhost:5000/getFrontPageTopImage"
+        );
+        const data = await response.json();
+        setTopImg(data);
+      } catch (error) {
+        console.log("err", error);
+      }
+      setLoading(false);
+    };
+    fetchProduct();
+  }, []);
+
+  //getting mid img form server
+  useEffect(() => {
+    const fetchProduct = async () => {
+      try {
+        setLoading(true);
+        const response = await fetch(
+          "http://localhost:5000/getFrontPageMiddleImage"
+        );
+        const data = await response.json();
+        setMidImg(data);
+      } catch (error) {
+        console.log("err", error);
+      }
+      setLoading(false);
+    };
+    fetchProduct();
+  }, []);
+
+  //getting disclaimer img form server
+  useEffect(() => {
+    const fetchProduct = async () => {
+      try {
+        setLoading(true);
+        const response = await fetch(
+          "http://localhost:5000/getFrontPageDisclaimer"
+        );
+        const data = await response.json();
+        setDisclaimer(data);
+      } catch (error) {
+        console.log("err", error);
+      }
+      setLoading(false);
+    };
+    fetchProduct();
+  }, []);
+
   return (
     <section>
       <div className="homeHead">
-        <img
+        {/* <img
           src="https://i.ibb.co/P90bHQx/E-Book.webp"
           alt=""
           className="headImg"
-        />
+        /> */}
+        {topImg?.map((dt, index) => (
+          <span key={index}>
+            <img src={dt.topImage} alt="loading" className="headImg" />
+          </span>
+        ))}
       </div>
       {/* Camera */}
       <div className="qr-main-section row container-fluid">
@@ -85,46 +150,29 @@ const Home = () => {
       {errorMessage && <h1 className="errorMessage">INVALID PASSWORD!</h1>}
 
       <div className="homeMiddleImg">
-        <img
-          src="https://m.media-amazon.com/images/I/61jovjd+f9L._SX3000_.jpg"
-          alt=""
-          className="midImg"
-        />
+        {midImg?.map((dt, index) => (
+          <span key={index}>
+            <img src={dt?.middleImage} alt="loading" className="midImg" />
+          </span>
+        ))}
       </div>
-      <div className="disclaimer my-5">
-        <span className="disclaimerHeader">Disclaimer</span>
-        <span className="disclaimerBody">
-          <ol>
-            <li className="disclaimer_li">
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s.
-            </li>
-            <li className="disclaimer_li">
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s.
-            </li>
-            <li className="disclaimer_li">
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s.
-            </li>
-            <li className="disclaimer_li">
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s.
-            </li>
-            <li className="disclaimer_li">
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s.
-            </li>
-            <Link to="/" className="disclaimer_seeMore">
-              See More......
-            </Link>
-          </ol>
-        </span>
+
+      <div className="mt-5">
+        <h2 className="text-center mb-3">Disclaimer</h2>
+        <div className="container mt-3">
+          {disclaimer?.map((dt, index) => (
+            <strong key={index}>
+              {disclaimer?.map((dsData) =>
+                ReactHtmlParser(dsData?.description)
+              )}
+            </strong>
+          ))}
+        </div>
+      </div>
+      <div className="text-center mt-5 pb-5">
+        <Link to="/" className="disclaimer_seeMore">
+          See More......
+        </Link>
       </div>
     </section>
   );

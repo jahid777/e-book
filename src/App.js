@@ -6,6 +6,7 @@ import AdminPage from "./Components/Admin/AdminPage";
 import AdminPrivateRoute from "./Components/AdminPrivateRoute/AdminPrivateRoute";
 import BookDisplay from "./Components/Display/BookDisplay";
 import Booklist from "./Components/EditData/BookList";
+import FrontPageEdit from "./Components/EditData/FrontPageEdit";
 import TermsConditionEdit from "./Components/EditData/TermsConditionEdit";
 import Home from "./Components/Home/Home";
 import PrivateRoute from "./Components/PrivateRoute/PrivateRoute";
@@ -36,6 +37,10 @@ function App() {
         <AdminPrivateRoute path="/book-list">
           <Booklist />
         </AdminPrivateRoute>
+
+        <PrivateRoute path="/frontPageEdit">
+          <FrontPageEdit />
+        </PrivateRoute>
         <Route path="/books">
           <BookDisplay />
         </Route>

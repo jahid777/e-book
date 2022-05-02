@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 import "./TermsConditionEdit.css";
 
 const TermsConditionEdit = () => {
-  const termsRef = useRef();
   const [suceesMsg, setSuccessMsg] = useState("");
   const [showDescription, setShowDescription] = useState("");
 
@@ -29,10 +28,12 @@ const TermsConditionEdit = () => {
 
   return (
     <div className="p-4">
-    <Link to="/dashboard" className="back"> <i className="bi bi-skip-backward-fill"></i> Back </Link>
-      <h1 className="text-center">TERMS AND CONDITON</h1>      
+      <Link to="/dashboard" className="back">
+        {" "}
+        <i className="bi bi-skip-backward-fill"></i> Back{" "}
+      </Link>
+      <h1 className="text-center">TERMS AND CONDITON</h1>
       <form onSubmit={handleTermsSubmit}>
-
         <div>
           <ReactQuill
             className="fullDescription mt-5 mb-5"

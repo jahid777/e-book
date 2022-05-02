@@ -20,7 +20,7 @@ const AdminPage = () => {
       <Link to="/addBook" className="edit__Pages">
         Book Add
       </Link>
-      <Link to="/" className="edit__Pages">
+      <Link to="/frontPageEdit" className="edit__Pages">
         Front-Page Edit
       </Link>
       <Link to="/termsConditionEdit" className="edit__Pages">
