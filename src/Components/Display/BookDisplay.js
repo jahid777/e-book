@@ -1,7 +1,27 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./BookDisplay.css";
 
 const BookDisplay = () => {
+  const [books, setBooks] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  //getting terms and condition description
+  useEffect(() => {
+    const fetchProduct = async () => {
+      try {
+        setLoading(true);
+        const response = await fetch("http://localhost:5000/getBookData");
+        const data = await response.json();
+        setBooks(data);
+      } catch (error) {
+        console.log("err", error);
+      }
+      setLoading(false);
+    };
+    fetchProduct();
+  }, []);
+
+  console.log(books);
   return (
     <main className="book_display">
       <section className="book_display_header">
@@ -24,69 +44,53 @@ const BookDisplay = () => {
             </button>
           </div>
           <div className="sideFilter my-4">
-            <span className="radioSearch">              
-              <input type="radio" id="book_name" name="search" value="Book Name" />
+            <span className="radioSearch">
+              <input
+                type="radio"
+                id="book_name"
+                name="search"
+                value="Book Name"
+              />
               <label for="book_name">Book Name</label>
             </span>
             <span className="radioSearch">
-              <input type="radio" id="author_name" name="search" value="Author Name" />
+              <input
+                type="radio"
+                id="author_name"
+                name="search"
+                value="Author Name"
+              />
               <label for="author_name">Author Name</label>
             </span>
             <span className="radioSearch">
               <input type="radio" id="isbn" name="search" value="ISBN Number" />
               <label for="isbn">ISBN Number</label>
-            </span>       
+            </span>
           </div>
         </form>
         <div className="book_display_main my-3">
-          
-            <div className="row bookRow">
-              <div className="col-12 col-md-4 book_card mb-2">
-                <img src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.anilaggrawal.com%2Fij%2Fvol_013_no_001%2Freviews%2Ftb%2Fbook002%2Fcover.jpg&f=1&nofb=1" alt="" className="bookImage" />
-                <span className="b_no">
-                  <p>1</p>
-                </span>
-                <div className="bookFoot">
-                  <p className="b-name">
-                    Being Mortal: Medicine and What Matters in the End
-                  </p>
-                  <aside className="d-flex justify-content-between actionbtn">
-                    <button className="btn viewBtn">View</button>
-                    <button className="btn downloadBtn">Download</button>
-                  </aside>
-                </div>
+          <div className="row bookRow">
+            {/* card */}
+            <div className="col-12 col-md-4 book_card mb-2">
+              <img
+                src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.anilaggrawal.com%2Fij%2Fvol_013_no_001%2Freviews%2Ftb%2Fbook002%2Fcover.jpg&f=1&nofb=1"
+                alt=""
+                className="bookImage"
+              />
+              <span className="b_no">
+                <p>1</p>
+              </span>
+              <div className="bookFoot">
+                <p className="b-name">
+                  Being Mortal: Medicine and What Matters in the End
+                </p>
+                <aside className="d-flex justify-content-between actionbtn">
+                  <button className="btn viewBtn">View</button>
+                  <button className="btn downloadBtn">Download</button>
+                </aside>
               </div>
-              <div className="col-12 col-md-4 book_card mb-2">
-                <img src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.anilaggrawal.com%2Fij%2Fvol_013_no_001%2Freviews%2Ftb%2Fbook002%2Fcover.jpg&f=1&nofb=1" alt="" className="bookImage" />
-                <span className="b_no">
-                  <p>1</p>
-                </span>
-                <div className="bookFoot">
-                  <p className="b-name">
-                    Being Mortal: Medicine and What Matters in the End
-                  </p>
-                  <aside className="d-flex justify-content-between actionbtn">
-                    <button className="btn viewBtn">View</button>
-                    <button className="btn downloadBtn">Download</button>
-                  </aside>
-                </div>
-              </div>
-              <div className="col-12 col-md-4 book_card mb-2">
-                <img src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.anilaggrawal.com%2Fij%2Fvol_013_no_001%2Freviews%2Ftb%2Fbook002%2Fcover.jpg&f=1&nofb=1" alt="" className="bookImage" />
-                <span className="b_no">
-                  <p>1</p>
-                </span>
-                <div className="bookFoot">
-                  <p className="b-name">
-                    Being Mortal: Medicine and What Matters in the End
-                  </p>
-                  <aside className="d-flex justify-content-between actionbtn">
-                    <button className="btn viewBtn">View</button>
-                    <button className="btn downloadBtn">Download</button>
-                  </aside>
-                </div>
-              </div>
-            </div>          
+            </div>
+          </div>
         </div>
       </section>
     </main>

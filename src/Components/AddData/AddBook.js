@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 
 const AddBook = () => {
   const [suceesMsg, setSuccessMsg] = useState(false);
+  const [message, setMessage] = useState("");
   const bookImgRef = useRef();
   const bookNameRef = useRef();
   const authorNameRef = useRef();
@@ -11,11 +12,13 @@ const AddBook = () => {
   const bookNumberRef = useRef();
   const bookLinkRef = useRef();
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
     const bookData = {
       bookImg: bookImgRef?.current?.value,
       bookName: bookNameRef?.current?.value,
       authorName: authorNameRef?.current?.value,
+      isbm: isbmRef?.current?.value,
       bookNumber: bookNumberRef?.current?.value,
       bookLink: bookLinkRef?.current?.value,
     };
@@ -30,9 +33,16 @@ const AddBook = () => {
       .then((result) => {
         if (result) {
           setSuccessMsg(true);
+          bookImgRef.current.value = "";
+          bookNameRef.current.value = "";
+          authorNameRef.current.value = "";
+          isbmRef.current.value = "";
+          bookNumberRef.current.value = "";
+          bookLinkRef.current.value = "";
         }
       });
   };
+
   return (
     <main className="bookupload">
       <section className="container">
@@ -40,19 +50,23 @@ const AddBook = () => {
           {" "}
           <i className="bi bi-skip-backward-fill"></i> Back{" "}
         </Link>
+
         <div className="row">
           <h2 className="text-center text-bold">Upload Your Book</h2>
           <div className="col-12 col-md-2"></div>
+
           <form
             className="col-12 col-md-8 bookInputForm"
             onSubmit={handleSubmit}
           >
             <div className="mb-3 bookImgInput">
-              <img
-                src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.anilaggrawal.com%2Fij%2Fvol_013_no_001%2Freviews%2Ftb%2Fbook002%2Fcover.jpg&f=1&nofb=1"
-                className="img-fluid bookImg"
-                alt="..."
-              />
+              {bookImgRef?.current?.value && (
+                <img
+                  src={bookImgRef?.current?.value}
+                  className="img-fluid bookImg"
+                  alt="BOOK"
+                />
+              )}
             </div>
 
             <div className="mb-3">
@@ -122,11 +136,11 @@ const AddBook = () => {
               />
             </div>
             <aside className="files">
-              <div className="mb-3">
+              {/* <div className="mb-3">
                 <label className="form-label">Book File:</label>
                 <input type="file" className="form-control" />
               </div>
-              <span className="orHr">OR</span>
+              <span className="orHr">OR</span> */}
               <div className="mb-3">
                 <label className="form-label">Book Link:</label>
                 <input
@@ -139,6 +153,11 @@ const AddBook = () => {
                 />
               </div>
             </aside>
+            {suceesMsg && (
+              <div className="alert alert-success text-center" role="alert">
+                <strong>Book successfully added!</strong>
+              </div>
+            )}
             <button type="submit" className="btn bookSubmit">
               Submit
             </button>
