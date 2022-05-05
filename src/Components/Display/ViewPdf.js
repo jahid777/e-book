@@ -38,9 +38,36 @@ const ViewPdf = () => {
       {selectedBook.length > 0 &&
         selectedBook.map((bookDt) => (
           <span key={bookDt._id}>
-            <a href={bookDt?.bookLink} target="_blank">
+            <a
+              href="https://dropbox.com/s/owl76gfhrt43am8/Anthony%20S.%20Fauci%2C%20Eugene%20Braunwald%2C%20Dennis%20L.%20Kasper%2C%20Stephen%20L.%20Hauser%2C%20Dan%20L.%20Longo%2C%20J.%20Larry%20Jameson%2C%20Joseph%20Loscalzo%20-%20Harrison%27s%20Principles%20of%20Internal%20Medicine-McGraw-Hill%20Professional%20%282008%29.pdf?dl=0"
+              // target="_blank"
+            >
               view book
             </a>
+
+            <br />
+            <br />
+
+            {/* dl for download */}
+            <a
+              href="https://dl.dropbox.com/s/owl76gfhrt43am8/Anthony%20S.%20Fauci%2C%20Eugene%20Braunwald%2C%20Dennis%20L.%20Kasper%2C%20Stephen%20L.%20Hauser%2C%20Dan%20L.%20Longo%2C%20J.%20Larry%20Jameson%2C%20Joseph%20Loscalzo%20-%20Harrison%27s%20Principles%20of%20Internal%20Medicine-McGraw-Hill%20Professional%20%282008%29.pdf?dl=0"
+              // target="_blank"
+            >
+              download Book
+            </a>
+
+            {/* //small link */}
+
+            <a
+              href="https://drive.google.com/file/d/1S6jxbYy729zQNc7qf9aDVEzFPRGWQ4mN/view?usp=sharing"
+              target="_blank"
+            >
+              small link view
+            </a>
+
+            {/* google drive link */}
+            {/* preview */}
+            {/* https://drive.google.com/file/d/1Iobh3MmwEiJG1KdkbwJ6lKydhWGoNMtp/view?usp=drivesdk */}
           </span>
         ))}
     </div>
