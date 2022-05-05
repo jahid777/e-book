@@ -28,9 +28,7 @@ const TermsCondition = () => {
     const fetchProduct = async () => {
       try {
         setLoading(true);
-        const response = await fetch(
-          "http://localhost:5000/getAddTermsCondition"
-        );
+        const response = await fetch("http://localhost:5000/getTermsCondition");
         const data = await response.json();
         setDescription(data);
       } catch (error) {

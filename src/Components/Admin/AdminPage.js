@@ -26,7 +26,7 @@ const AdminPage = () => {
       <Link to="/termsConditionEdit" className="edit__Pages">
         Terms and Condition Edit
       </Link>
-      <Link to="/" className="edit__Pages">
+      <Link to="/bannerEditDisplaybook" className="edit__Pages">
         Library Top Pic Edit
       </Link>
 

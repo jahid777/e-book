@@ -8,12 +8,18 @@ const BookDisplay = () => {
   const [search, setSearch] = useState("");
   const [filteredBooks, setFilteredBooks] = useState([]);
   const [bookCat, setBookCat] = useState("");
+  const [topBannerImg, setTopBannerImg] = useState([]);
 
   //for searching book
   const handleSearch = (e) => {
     setSearch(e.target.value);
     // search butoon a click na korei jokhn change korbo tokhni data dekhabe
     // handeSearchSubmit(e);
+  };
+
+  //gatting the radio button value and set inte state
+  const filterbookCat = (bookType) => {
+    setBookCat(bookType);
   };
 
   //ata conditionally search kore value onujay
@@ -44,11 +50,6 @@ const BookDisplay = () => {
     }
   };
 
-  //gatting the radio button value and set inte state
-  const filterbookCat = (bookType) => {
-    setBookCat(bookType);
-  };
-
   //getting books data
   useEffect(() => {
     const fetchProduct = async () => {
@@ -66,14 +67,35 @@ const BookDisplay = () => {
     fetchProduct();
   }, []);
 
+  //getting the top banner img
+  useEffect(() => {
+    const fetchProduct = async () => {
+      try {
+        setLoading(true);
+        const response = await fetch(
+          "http://localhost:5000/DisplayBookTopImage"
+        );
+        const data = await response.json();
+        setTopBannerImg(data);
+      } catch (error) {
+        console.log("err", error);
+      }
+      setLoading(false);
+    };
+    fetchProduct();
+  }, []);
+
   return (
     <main className="book_display">
       <section className="book_display_header">
-        <img
-          src="https://icms-image.slatic.net/images/ims-web/b7e9d05d-9118-47ae-942a-9fdbfe0dbbe6.jpg"
-          alt="Neourology Library"
-          className="img-fluid bannerImg"
-        />
+        {topBannerImg.map((tpBanner) => (
+          <img
+            key={tpBanner._id}
+            src={tpBanner?.topdisplayBookBanner}
+            alt="Neourology Library"
+            className="img-fluid bannerImg"
+          />
+        ))}
       </section>
       <section className="container-fluid book_display_body my-3">
         <form className="search__filter">

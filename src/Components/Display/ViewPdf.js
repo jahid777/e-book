@@ -37,7 +37,7 @@ const ViewPdf = () => {
     <div>
       {selectedBook.length > 0 &&
         selectedBook.map((bookDt) => (
-          <span>
+          <span key={bookDt._id}>
             <a href={bookDt?.bookLink} target="_blank">
               view book
             </a>
