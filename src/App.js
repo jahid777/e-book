@@ -5,6 +5,7 @@ import AdminLogin from "./Components/Admin/AdminLogin";
 import AdminPage from "./Components/Admin/AdminPage";
 import AdminPrivateRoute from "./Components/AdminPrivateRoute/AdminPrivateRoute";
 import BookDisplay from "./Components/Display/BookDisplay";
+import ViewPdf from "./Components/Display/ViewPdf";
 import Booklist from "./Components/EditData/BookList";
 import FrontPageEdit from "./Components/EditData/FrontPageEdit";
 import TermsConditionEdit from "./Components/EditData/TermsConditionEdit";
@@ -43,6 +44,10 @@ function App() {
         </PrivateRoute>
         <Route path="/books">
           <BookDisplay />
+        </Route>
+
+        <Route path="/viewPdf/:bookId">
+          <ViewPdf />
         </Route>
       </Switch>
     </Router>

@@ -1,11 +1,55 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import "./BookDisplay.css";
 
 const BookDisplay = () => {
   const [books, setBooks] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [search, setSearch] = useState("");
+  const [filteredBooks, setFilteredBooks] = useState([]);
+  const [bookCat, setBookCat] = useState("");
 
-  //getting terms and condition description
+  //for searching book
+  const handleSearch = (e) => {
+    setSearch(e.target.value);
+    // search butoon a click na korei jokhn change korbo tokhni data dekhabe
+    // handeSearchSubmit(e);
+  };
+
+  //ata conditionally search kore value onujay
+  const handeSearchSubmit = (e) => {
+    e.preventDefault();
+    if (bookCat === "bookName") {
+      const filterResult = books.filter((product) =>
+        product?.bookName
+          .toLowerCase()
+          .includes(search.toString().toLowerCase())
+      );
+
+      setFilteredBooks(filterResult);
+    }
+    if (bookCat === "authorName") {
+      const filterResult = books.filter((product) =>
+        product?.authorName
+          .toLowerCase()
+          .includes(search.toString().toLowerCase())
+      );
+      setFilteredBooks(filterResult);
+    }
+    if (bookCat === "isbn") {
+      const filterResult = books.filter((product) =>
+        product?.isbn.toLowerCase().includes(search.toString().toLowerCase())
+      );
+      setFilteredBooks(filterResult);
+    }
+  };
+
+  //gatting the radio button value and set inte state
+  const filterbookCat = (bookType) => {
+    setBookCat(bookType);
+  };
+
+  //getting books data
   useEffect(() => {
     const fetchProduct = async () => {
       try {
@@ -13,6 +57,7 @@ const BookDisplay = () => {
         const response = await fetch("http://localhost:5000/getBookData");
         const data = await response.json();
         setBooks(data);
+        setFilteredBooks(data);
       } catch (error) {
         console.log("err", error);
       }
@@ -21,7 +66,6 @@ const BookDisplay = () => {
     fetchProduct();
   }, []);
 
-  console.log(books);
   return (
     <main className="book_display">
       <section className="book_display_header">
@@ -38,8 +82,13 @@ const BookDisplay = () => {
               type="text"
               className="searchbar"
               placeholder="Search book name, authoe name, isbm....."
+              onChange={handleSearch}
             />
-            <button type="submit" className="btn search_btn">
+            <button
+              type="submit"
+              className="btn search_btn"
+              onClick={handeSearchSubmit}
+            >
               Search
             </button>
           </div>
@@ -49,47 +98,57 @@ const BookDisplay = () => {
                 type="radio"
                 id="book_name"
                 name="search"
-                value="Book Name"
+                value="bookName"
+                onClick={() => filterbookCat("bookName")}
               />
-              <label for="book_name">Book Name</label>
+              <label htmlFor="book_name">Book Name</label>
             </span>
             <span className="radioSearch">
               <input
                 type="radio"
                 id="author_name"
                 name="search"
-                value="Author Name"
+                value="authorName"
+                onClick={() => filterbookCat("authorName")}
               />
-              <label for="author_name">Author Name</label>
+              <label htmlFor="author_name">Author Name</label>
             </span>
             <span className="radioSearch">
-              <input type="radio" id="isbn" name="search" value="ISBN Number" />
-              <label for="isbn">ISBN Number</label>
+              <input
+                type="radio"
+                id="isbn"
+                name="search"
+                value="isbm"
+                onClick={() => filterbookCat("isbm")}
+              />
+              <label htmlFor="isbn">ISBN Number</label>
             </span>
           </div>
         </form>
         <div className="book_display_main my-3">
           <div className="row bookRow">
             {/* card */}
-            <div className="col-12 col-md-4 book_card mb-2">
-              <img
-                src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.anilaggrawal.com%2Fij%2Fvol_013_no_001%2Freviews%2Ftb%2Fbook002%2Fcover.jpg&f=1&nofb=1"
-                alt=""
-                className="bookImage"
-              />
-              <span className="b_no">
-                <p>1</p>
-              </span>
-              <div className="bookFoot">
-                <p className="b-name">
-                  Being Mortal: Medicine and What Matters in the End
-                </p>
-                <aside className="d-flex justify-content-between actionbtn">
-                  <button className="btn viewBtn">View</button>
-                  <button className="btn downloadBtn">Download</button>
-                </aside>
+            {filteredBooks.map((bookData, index) => (
+              <div
+                className="col-12 col-md-4 book_card mb-2"
+                key={bookData?._id}
+              >
+                <img src={bookData?.bookImg} alt="" className="bookImage" />
+                <span className="b_no">
+                  <p>{index + 1}</p>
+                </span>
+                <div className="bookFoot">
+                  <p className="b-name pt-2">{bookData?.bookName}</p>
+                  <aside className="d-flex justify-content-between actionbtn">
+                    <Link to={`/viewPdf/${bookData?._id}`}>
+                      <button className="btn viewBtn">View</button>
+                    </Link>
+
+                    <button className="btn downloadBtn">Download</button>
+                  </aside>
+                </div>
               </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
