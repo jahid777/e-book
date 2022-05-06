@@ -71,7 +71,7 @@ const BooklistEdit = () => {
       <br />
       <span>
         <input
-          style={{ width: "450px" }}
+          style={{ width: "450px", height: "40px" }}
           className="mt-3"
           type="text"
           onChange={handleSearch}
@@ -108,7 +108,7 @@ const BooklistEdit = () => {
                   {/* edit button */}
                   <td>
                     <button
-                      className="btn btn-primary"
+                      className="btn btn-success"
                       data-bs-toggle="modal"
                       data-bs-target="#staticBackdropBook"
                       onClick={() => fetchSingleBook(data?._id)}
@@ -121,7 +121,7 @@ const BooklistEdit = () => {
                   {/* delete button */}
                   <td>
                     <button
-                      className="btn btn-primary"
+                      className="btn btn-danger"
                       onClick={() => handleBookDelete(data?._id)}
                     >
                       Delete
