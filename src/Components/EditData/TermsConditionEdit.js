@@ -3,10 +3,13 @@ import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import { Link } from "react-router-dom";
 import "./TermsConditionEdit.css";
+import ReactHtmlParser from "react-html-parser";
 
 const TermsConditionEdit = () => {
   const [suceesMsg, setSuccessMsg] = useState("");
   const [showDescription, setShowDescription] = useState("");
+  const [termsAndCondition, setTermsAndCondition] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const handleTermsSubmit = () => {
     const termsConditionData = {
@@ -24,6 +27,34 @@ const TermsConditionEdit = () => {
           setSuccessMsg(true);
         }
       });
+  };
+
+  //getting disclaimer img form server
+  useEffect(() => {
+    const fetchProduct = async () => {
+      try {
+        setLoading(true);
+        const response = await fetch("http://localhost:5000/getTermsCondition");
+        const data = await response.json();
+        setTermsAndCondition(data);
+      } catch (error) {
+        console.log("err", error);
+      }
+      setLoading(false);
+    };
+    fetchProduct();
+  }, []);
+
+  //delete terms and condition
+  const handleTermsConditionRemove = (id) => {
+    fetch(`http://localhost:5000/termsConditiondelete/${id}`, {
+      method: "DELETE",
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        console.log("deleted successfully");
+      });
+    window.location.reload();
   };
 
   return (
@@ -80,7 +111,76 @@ const TermsConditionEdit = () => {
         </div>
 
         <div className="d-flex justify-content-center">
-          <button className="btn btn-success btn_terms_submit" type="submit">
+          {/* delete disclaimer */}
+          <button
+            className="btn btn-outline-primary btn_terms_submit"
+            type="button"
+            data-bs-toggle="modal"
+            data-bs-target="#staticBackdropTermsCondition"
+          >
+            Delete Terms and Condition
+          </button>
+          {/* <!-- Modal --> */}
+          <div
+            className="modal fade"
+            id="staticBackdropTermsCondition"
+            data-bs-backdrop="static"
+            data-bs-keyboard="false"
+            tabIndex="-1"
+            aria-labelledby="staticBackdropLabel"
+            aria-hidden="true"
+          >
+            <div className="modal-dialog modal-dialog-centered">
+              <div className="modal-content">
+                <div className="modal-header">
+                  <h5 className="modal-title" id="staticBackdropLabel">
+                    Terms and Condition
+                  </h5>
+                  <button
+                    type="button"
+                    className="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                  ></button>
+                </div>
+                <div
+                  className="modal-body"
+                  style={{ display: "flex", justifyContent: "center" }}
+                >
+                  {/* this is modal body */}
+
+                  <div
+                    className="card"
+                    style={{
+                      width: "100%",
+                      padding: "15px",
+                      textAlign: "justify",
+                    }}
+                  >
+                    {termsAndCondition.map((tpData) => (
+                      <span key={tpData?._id}>
+                        <strong>{ReactHtmlParser(tpData?.description)}</strong>
+
+                        <button
+                          type="button"
+                          className="btn btn-primary"
+                          onClick={() => handleTermsConditionRemove(tpData._id)}
+                        >
+                          Confirm Delete
+                        </button>
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* submit disclaimer */}
+          <button
+            className="btn btn-outline-primary btn_terms_submit"
+            type="submit"
+          >
             SUBMIT
           </button>
         </div>

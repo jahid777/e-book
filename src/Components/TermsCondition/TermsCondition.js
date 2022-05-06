@@ -87,9 +87,14 @@ const TermsCondition = () => {
               ></button>
             </div>
             <div className="modal-body">
-              {description?.map((dsData) =>
-                ReactHtmlParser(dsData?.description)
-              )}
+              {description?.map((dsData) => (
+                <span
+                  key={dsData?._id}
+                  style={{ textAlign: "justify", padding: "0px 0px 15px" }}
+                >
+                  {ReactHtmlParser(dsData?.description)}
+                </span>
+              ))}
             </div>
           </div>
         </div>
