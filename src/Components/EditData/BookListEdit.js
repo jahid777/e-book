@@ -7,6 +7,16 @@ const BooklistEdit = () => {
   const [loading, setLoading] = useState(false);
   const [books, setBooks] = useState([]);
   const [singleBook, setSingleBook] = useState([]);
+  const [search, setSearch] = useState("");
+
+  const handleSearch = (e) => {
+    setSearch(e.target.value);
+  };
+
+  //for search bar
+  const filterResult = books.filter((product) =>
+    product?.bookName.toLowerCase().includes(search.toString().toLowerCase())
+  );
 
   //getting books data
   useEffect(() => {
@@ -57,13 +67,24 @@ const BooklistEdit = () => {
         {" "}
         <i className="bi bi-skip-backward-fill"></i> Back{" "}
       </Link>
+      <br />
+      <br />
+      <span>
+        <input
+          style={{ width: "450px" }}
+          className="mt-3"
+          type="text"
+          onChange={handleSearch}
+          placeholder="Search your book by name"
+        />
+      </span>
       <section className="bookList">
-        <span className="bookListHeader">Your Book List</span>
         <div className="table-responsive mt-3">
           <table className="table mt-3">
             <thead className="thead-dark">
               <tr>
                 <th scope="col">NO</th>
+                <th scope="col">IMAGE</th>
                 <th scope="col">BOOK NAME</th>
                 <th scope="col">EDIT</th>
                 <th scope="col">DELETE</th>
@@ -71,9 +92,17 @@ const BooklistEdit = () => {
             </thead>
 
             <tbody>
-              {books?.map((data, index) => (
+              {filterResult?.map((data, index) => (
                 <tr key={index}>
                   <th scope="row">{index + 1}</th>
+                  <td>
+                    {" "}
+                    <img
+                      style={{ height: "50px", width: "50px" }}
+                      src={data?.bookImg}
+                      alt=""
+                    />{" "}
+                  </td>
                   <td>{data?.bookName}</td>
 
                   {/* edit button */}
