@@ -106,7 +106,7 @@
   border-bottom-color: #6a679e;
 }
 
-.login__submit {
+.login__submit { 
   background: #fff;
   font-size: 14px;
   margin-top: 30px;
@@ -151,11 +151,18 @@
 .edit__Pages{
 text-decoration: none;
 color: #000;
-border: 1px solid var(--green);
+border: 2px solid black;
 padding: 10px 20px;
 margin: 10px 0;
+width: 250px;
+text-align: center;
+font-weight: bold;
 }
 .edit__Pages:hover{
   background-color: var(--lightgreen);
   color: #fff;
+}
+.admin_logout{
+  width: 250px;
+  height: 45px;
 }

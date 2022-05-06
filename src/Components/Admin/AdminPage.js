@@ -30,7 +30,10 @@ const AdminPage = () => {
         Library Top Pic Edit
       </Link>
 
-      <button className="btn btn-success" onClick={() => handleLogout()}>
+      <button
+        className="btn btn-danger admin_logout mt-3"
+        onClick={() => handleLogout()}
+      >
         Admin Logout
       </button>
     </section>
