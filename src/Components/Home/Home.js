@@ -153,22 +153,22 @@ const Home = () => {
       </div>
 
       <div className="mt-5">
-        <h2 className="text-center mb-3">Disclaimer</h2>
+        <h2 className="text-center mb-5">Disclaimer</h2>
         <div className="container mt-3">
-          {disclaimer?.map((dt, index) => (
-            <strong key={index}>
-              {disclaimer?.map((dsData) =>
-                ReactHtmlParser(dsData?.description)
-              )}
-            </strong>
-          ))}
+          <strong>
+            {disclaimer?.map((dsData) => (
+              <span key={dsData?._id} style={{ textAlign: "justify" }}>
+                {ReactHtmlParser(dsData?.description)}
+              </span>
+            ))}
+          </strong>
         </div>
       </div>
-      <div className="text-center mt-5 pb-5">
+      {/* <div className="text-center mt-5 pb-5">
         <Link to="/" className="disclaimer_seeMore">
           See More......
         </Link>
-      </div>
+      </div> */}
     </section>
   );
 };

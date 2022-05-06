@@ -450,7 +450,7 @@ const FrontPageEdit = () => {
               <div className="modal-content">
                 <div className="modal-header">
                   <h5 className="modal-title" id="staticBackdropLabel">
-                    Middle IMAGE
+                    Disclaimer
                   </h5>
                   <button
                     type="button"
@@ -468,12 +468,15 @@ const FrontPageEdit = () => {
                   <div
                     className="card"
                     style={{
-                      width: "18rem",
+                      width: "100%",
+                      padding: "10px",
                     }}
                   >
                     {disclaimerData.map((tpData) => (
                       <span key={tpData?._id}>
-                        <strong>{ReactHtmlParser(tpData?.description)}</strong>
+                        <strong style={{ textAlign: "justify" }}>
+                          {ReactHtmlParser(tpData?.description)}
+                        </strong>
 
                         <button
                           type="button"
