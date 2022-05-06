@@ -63,7 +63,7 @@ const TermsConditionEdit = () => {
         {" "}
         <i className="bi bi-skip-backward-fill"></i> Back{" "}
       </Link>
-      <h1 className="text-center">TERMS AND CONDITON</h1>
+      <h1 className="text-center">Terms and condtion edit and adding data</h1>
       <form onSubmit={handleTermsSubmit}>
         <div>
           <ReactQuill
@@ -118,7 +118,7 @@ const TermsConditionEdit = () => {
             data-bs-toggle="modal"
             data-bs-target="#staticBackdropTermsCondition"
           >
-            Delete Terms and Condition
+            Delete
           </button>
           {/* <!-- Modal --> */}
           <div

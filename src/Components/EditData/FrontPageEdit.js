@@ -172,6 +172,9 @@ const FrontPageEdit = () => {
 
   return (
     <div>
+      <h1 style={{ textAlign: "center", marginTop: "8px" }}>
+        Home page edit and adding data
+      </h1>
       {/* top banner form */}
       <form onSubmit={handleTopBannerSubmit}>
         <div className="mb-3 mt-5 container">
@@ -183,7 +186,7 @@ const FrontPageEdit = () => {
               required
               type="text"
               className="form-control"
-              placeholder="pest your image link"
+              placeholder="Your image link"
               aria-label="Recipient's username  with two button addons"
               id="exampleFormControlTextarea1"
               aria-describedby="button-addon2"
@@ -196,7 +199,7 @@ const FrontPageEdit = () => {
               data-bs-toggle="modal"
               data-bs-target="#staticBackdrop"
             >
-              Delete Top Image
+              Delete
             </button>
             {/* <!-- Modal --> */}
             <div
@@ -262,7 +265,7 @@ const FrontPageEdit = () => {
 
             {/* top Image submit button */}
             <button className="btn btn-outline-primary" type="submit">
-              Top Image Submit
+              Submit
             </button>
 
             {/* <button
@@ -287,7 +290,7 @@ const FrontPageEdit = () => {
               required
               type="text"
               className="form-control"
-              placeholder="pest your middle image link"
+              placeholder="Your image link"
               aria-label="Recipient's username"
               id="ControlTextarea2"
               aria-describedby="button-addon2"
@@ -301,7 +304,7 @@ const FrontPageEdit = () => {
               data-bs-toggle="modal"
               data-bs-target="#staticBackdropMiddleImage"
             >
-              Delete Middle image
+              Delete
             </button>
             {/* <!-- Modal --> */}
             <div
@@ -371,7 +374,7 @@ const FrontPageEdit = () => {
               type="submit"
               id="button-addon2"
             >
-              Submit Middle image
+              Submit
             </button>
           </div>
         </div>
