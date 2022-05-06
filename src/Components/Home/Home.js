@@ -122,7 +122,7 @@ const Home = () => {
       {/* Button */}
       <div className="scan-button">
         <button className="btn btn-success" onClick={() => setDisply(!display)}>
-          SCEN BY QR CODE{" "}
+          SCAN YOUR LOGIN CODE
         </button>
       </div>
       {/* Login input */}

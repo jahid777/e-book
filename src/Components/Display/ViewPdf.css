@@ -1,0 +1,19 @@
+.viewPdf_page_img{
+    height: 200px;
+    width: 300px;
+    border: 1px solid gray;
+}
+.viewPdf_main_section{
+    display: flex;
+    justify-content: center;   
+}
+.viewPdf_card{
+    border: 1px solid #EDF9F8;
+    padding: 30px;
+    background: #EDF5F9;
+}
+
+.viewButton{
+    text-decoration: none !important;
+    color: white !important;
+}
