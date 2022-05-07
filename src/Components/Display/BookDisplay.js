@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./BookDisplay.css";
+import { saveAs } from "file-saver";
 
 const BookDisplay = () => {
   const [books, setBooks] = useState([]);
@@ -85,6 +86,11 @@ const BookDisplay = () => {
     fetchProduct();
   }, []);
 
+  //this is for download book
+  const handleDownload = (download) => {
+    saveAs(download);
+  };
+
   return (
     <main className="book_display">
       <section className="book_display_header">
@@ -165,7 +171,12 @@ const BookDisplay = () => {
                     <Link to={`/viewPdf/${bookData?._id}`} className="viewBtn">
                       <button className="btn">View</button>
                     </Link>
-                    <button className="btn downloadBtn">Download</button>
+                    <button
+                      className="btn downloadBtn"
+                      onClick={() => handleDownload(bookData?.downloadBookLink)}
+                    >
+                      Download
+                    </button>
                   </aside>
                 </div>
               </div>
