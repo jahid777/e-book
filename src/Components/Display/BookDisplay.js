@@ -162,10 +162,9 @@ const BookDisplay = () => {
                 <div className="bookFoot">
                   <p className="b-name pt-2">{bookData?.bookName}</p>
                   <aside className="d-flex justify-content-between actionbtn">
-                    <Link to={`/viewPdf/${bookData?._id}`}>
-                      <button className="btn viewBtn">View</button>
+                    <Link to={`/viewPdf/${bookData?._id}`} className="viewBtn">
+                      <button className="btn">View</button>
                     </Link>
-
                     <button className="btn downloadBtn">Download</button>
                   </aside>
                 </div>

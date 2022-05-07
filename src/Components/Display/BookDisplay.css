@@ -1,104 +1,107 @@
 .bannerImg {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-  }
-  
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.searchbar {
+  width: 50%;
+  border-radius: 0 !important;
+  border: 1px solid #000;
+  padding: 0 10px;
+}
+.search_btn {
+  background-color: #dc143c;
+  color: #fff;
+  border-radius: 0 !important;
+  border: 1px solid #dc143c;
+}
+.search_btn:hover {
+  background-color: #ff0000;
+  color: #fff;
+}
+.sideFilter {
+  display: flex;
+  justify-content: center;
+}
+.radioSearch {
+  margin-right: 5%;
+  display: flex;
+  vertical-align: middle;
+}
+.radioSearch input[type="radio"] {
+  height: 20px;
+  width: 20px;
+}
+.radioSearch label {
+  font-weight: bold;
+  margin-left: 5px;
+}
+.bookRow {
+  padding: 0 10px;
+  display: flex;
+}
+.book_card {
+  position: relative;
+  padding-left: 0;
+}
+.b_no {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-top: 80px solid red;
+  border-right: 80px solid transparent;
+  left: 0;
+  top: 0;
+}
+.b_no p {
+  position: absolute;
+  top: -65px !important;
+  left: 15px;
+  color: #fff;
+  font-weight: bold;
+}
+.bookImage {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+}
+.bookFoot {
+  background-color: #1e272e;
+  border-radius: 0 0 5px 5px;
+  padding: 10px;
+}
+.b-name {
+  text-align: center;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 5px !important;
+}
+
+.viewBtn,
+.downloadBtn {
+  width: 49%;
+  border-radius: 0;
+  text-align: center;
+}
+
+.viewBtn,
+.downloadBtn:hover {
+  background-color: #fff;
+  color: #000;
+}
+.downloadBtn,
+.viewBtn:hover {
+  background-color: #339933;
+  color: #fff;
+}
+
+@media only screen and (max-width: 900px) {
   .searchbar {
-    width: 50%;
-    border-radius: 0 !important;
-    border: 1px solid #000;
-    padding: 0 10px;
-  }
-  .search_btn {
-    background-color: #dc143c;
-    color: #fff;
-    border-radius: 0 !important;
-    border: 1px solid #dc143c;
-  }
-  .search_btn:hover {
-    background-color: #ff0000;
-    color: #fff;
-  }
-  .sideFilter{
-    display: flex;
-    justify-content: center;
-  }
-  .radioSearch{
-    margin-right: 5%;
-    display: flex;
-    vertical-align: middle;
-  }
-  .radioSearch input[type=radio] {
-    height: 20px;
-    width: 20px;
-  }
-  .radioSearch label{
-    font-weight: bold;
-    margin-left: 5px;
-  }
-  .bookRow {
-    padding: 0 10px;
-    display: flex;
-    justify-content: space-between;
-  }
-  .book_card {
-    position: relative;
-    padding-left: 0;
-  }
-  .b_no {
-    position: absolute;
-    width: 0;
-    height: 0;
-    border-top: 80px solid red;
-    border-right: 80px solid transparent;
-    left: 0;
-    top: 0;
-  }
-  .b_no p {
-    position: absolute;
-    top: -65px !important;
-    left: 15px;
-    color: #fff;
-    font-weight: bold;
-  }
-  .bookImage {
-    width: 100%;
-    height: 300px;
-    object-fit: cover;
-  }
-  .bookFoot {
-    background-color: #1e272e;
-    border-radius: 0 0 5px 5px;
-  }
-  .b-name {
-    text-align: center;
-    color: #fff;
-  }
-  
-  .viewBtn,
-  .downloadBtn {
     width: 100%;
   }
-  
-  .viewBtn,
-  .downloadBtn:hover {
-    background-color: #575fcf;
-    color: #fff;
+  .book_display_main {
+    display: flex;
+    flex-direction: column-reverse;
   }
-  .downloadBtn,
-  .viewBtn:hover {
-    background-color: #00d8d6;
-    color: #fff;
-  }
-  
-  @media only screen and (max-width: 900px) {
-    .searchbar {
-      width: 100%;
-    }
-    .book_display_main {
-      display: flex;
-      flex-direction: column-reverse;
-    }
-  }
-  
+}
