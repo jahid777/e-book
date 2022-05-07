@@ -8,8 +8,33 @@ const ViewPdf = () => {
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
   const form = useRef();
-
   const { bookId } = useParams();
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    emailjs
+      .sendForm(
+        "service_tgfxmke",
+        "template_l1dgzs5",
+        form.current,
+        "-5cEZ1_2xnVcOEQhI"
+      )
+      .then(
+        (result) => {
+          if (result) {
+            setMessage("Your Email Send Successfully");
+            setTimeout(() => {
+              setMessage("");
+            }, "5000");
+            e.target.reset();
+          }
+        },
+        (error) => {
+          console.log(error.text);
+        }
+      );
+  };
 
   //getting books data
   useEffect(() => {
@@ -29,34 +54,6 @@ const ViewPdf = () => {
 
   //selection the specefic book
   const selectedBook = books.filter((bk) => bk._id == bookId);
-
-  //email sending
-  function sendEmail(e) {
-    e.preventDefault();
-
-    emailjs
-      .sendForm(
-        "service_pg023g8",
-        "template_hpa5u8n",
-        e.target,
-        "-5cEZ1_2xnVcOEQhI"
-      )
-      .then(
-        (result) => {
-          if (result) {
-            setMessage("your message successfully sent!");
-            setTimeout(() => {
-              setMessage("");
-            }, 5000);
-          }
-          console.log(result.text);
-        },
-        (error) => {
-          console.log(error.text);
-        }
-      );
-    e.target.reset();
-  }
 
   return (
     <div>
@@ -157,9 +154,9 @@ const ViewPdf = () => {
                             >
                               {/* this is body */}
                               <form
-                                className="bookInputForm"
-                                ref={form}
                                 onSubmit={sendEmail}
+                                ref={form}
+                                className="bookInputForm"
                               >
                                 <div className="mb-3">
                                   <label
@@ -173,8 +170,8 @@ const ViewPdf = () => {
                                     type="email"
                                     className="form-control"
                                     id="InputEmail"
-                                    placeholder="email"
-                                    // ref={bookNameRef}
+                                    placeholder="Email"
+                                    name="Email"
                                   />
                                 </div>
 
@@ -191,7 +188,8 @@ const ViewPdf = () => {
                                     className="form-control"
                                     id="InputBookName"
                                     placeholder="Book Name"
-                                    // ref={bookNameRef}
+                                    name="Book Name"
+                                    defaultValue={bookDt?.bookName}
                                   />
                                 </div>
 
@@ -208,7 +206,8 @@ const ViewPdf = () => {
                                     className="form-control"
                                     id="InputISBM"
                                     placeholder="Isbm"
-                                    // ref={isbmRef}
+                                    name="Isbm"
+                                    defaultValue={bookDt?.isbm}
                                   />
                                 </div>
                                 <div className="mb-3">
@@ -224,16 +223,25 @@ const ViewPdf = () => {
                                     className="form-control"
                                     id="InputBookNo."
                                     placeholder="Book Number"
-                                    // ref={bookNumberRef}
+                                    name="Book Number"
+                                    defaultValue={bookDt?.bookNumber}
                                   />
                                 </div>
 
                                 <button
                                   type="submit"
-                                  className="btn bookSubmit"
+                                  className="btn bookSubmit mb-3"
                                 >
                                   Submit
                                 </button>
+
+                                <strong
+                                  style={{
+                                    color: "green",
+                                  }}
+                                >
+                                  {message}
+                                </strong>
                               </form>
                             </div>
                           </div>
