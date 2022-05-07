@@ -97,7 +97,7 @@ const ViewPdf = () => {
                         target="_blank"
                         rel="noopener noreferrer"
                       >
-                        view book
+                        Read Book
                       </a>
                     </button>{" "}
                     &nbsp;
@@ -107,7 +107,7 @@ const ViewPdf = () => {
                       data-bs-toggle="modal"
                       data-bs-target="#staticBackdropSoftCopy"
                     >
-                      Soft copy
+                      Soft Copy
                     </button>
                     {/* <!-- Modal --> */}
                     <div

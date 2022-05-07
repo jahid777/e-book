@@ -156,9 +156,9 @@ const BookDisplay = () => {
         <div className="book_display_main my-3">
           <div className="row bookRow">
             {/* card */}
-            {filteredBooks.map((bookData, index) => (
+            {filteredBooks?.map((bookData, index) => (
               <div
-                className="col-12 col-md-4 book_card mb-2"
+                className="col-12 col-md-4 book_card mb-4"
                 key={bookData?._id}
               >
                 <img src={bookData?.bookImg} alt="" className="bookImage" />
