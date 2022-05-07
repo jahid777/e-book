@@ -10,6 +10,7 @@ const PopupEditBookList = ({ singleBook }) => {
   const isbmRef = useRef();
   const bookNumberRef = useRef();
   const bookLinkRef = useRef();
+  const downloadBookLinkRef = useRef();
 
   // update product and send to the database
   const handleEditBook = (e) => {
@@ -21,6 +22,7 @@ const PopupEditBookList = ({ singleBook }) => {
       isbm: isbmRef?.current?.value,
       bookNumber: bookNumberRef?.current?.value,
       bookLink: bookLinkRef?.current?.value,
+      downloadBookLink: downloadBookLinkRef?.current?.value,
     };
     fetch(`http://localhost:5000/updateBook/${_id}`, {
       method: "PATCH",
@@ -144,25 +146,39 @@ const PopupEditBookList = ({ singleBook }) => {
                       ref={bookNumberRef}
                     />
                   </div>
-                  <aside className="files">
-                    <div className="mb-3">
-                      <label className="form-label">Book Link:</label>
-                      <input
-                        required
-                        type="text"
-                        className="form-control"
-                        id="InputBookLink"
-                        placeholder="Book Link"
-                        ref={bookLinkRef}
-                      />
-                    </div>
-                  </aside>
+
+                  <div className="mb-3">
+                    <label className="form-label">Book Link:</label>
+                    <input
+                      required
+                      type="text"
+                      className="form-control"
+                      id="InputBookLink"
+                      placeholder="Book Link"
+                      ref={bookLinkRef}
+                    />
+                  </div>
+
+                  <div className="mb-3">
+                    <label htmlFor="InputDownloadBook" className="form-label">
+                      Download Book Link
+                    </label>
+                    <input
+                      required
+                      type="text"
+                      className="form-control"
+                      id="InputDownloadBook"
+                      placeholder="Download Book Link"
+                      ref={downloadBookLinkRef}
+                    />
+                  </div>
+
                   {suceesMsg && (
                     <div
                       className="alert alert-success text-center"
                       role="alert"
                     >
-                      <strong>Book successfully added!</strong>
+                      <strong>Book successfully update!</strong>
                     </div>
                   )}
                   <button type="submit" className="btn bookSubmit">
