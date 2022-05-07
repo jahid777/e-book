@@ -11,6 +11,7 @@ const AddBook = () => {
   const isbmRef = useRef();
   const bookNumberRef = useRef();
   const bookLinkRef = useRef();
+  const downloadBookLinkRef = useRef();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -21,6 +22,7 @@ const AddBook = () => {
       isbm: isbmRef?.current?.value,
       bookNumber: bookNumberRef?.current?.value,
       bookLink: bookLinkRef?.current?.value,
+      downloadBookLink: downloadBookLinkRef?.current?.value,
     };
 
     // INSERT top image ADMIN AT THE DATABASE
@@ -39,6 +41,7 @@ const AddBook = () => {
           isbmRef.current.value = "";
           bookNumberRef.current.value = "";
           bookLinkRef.current.value = "";
+          downloadBookLinkRef.current.value = "";
         }
       });
   };
@@ -135,30 +138,38 @@ const AddBook = () => {
                 ref={bookNumberRef}
               />
             </div>
-            <aside className="files">
-              {/* <div className="mb-3">
-                <label className="form-label">Book File:</label>
-                <input type="file" className="form-control" />
-              </div>
-              <span className="orHr">OR</span> */}
-              <div className="mb-3">
-                <label className="form-label">Book Link:</label>
-                <input
-                  required
-                  type="text"
-                  className="form-control"
-                  id="InputBookLink"
-                  placeholder="Book Link"
-                  ref={bookLinkRef}
-                />
-              </div>
-            </aside>
+
+            <div className="mb-3">
+              <label className="form-label">Book Link:</label>
+              <input
+                required
+                type="text"
+                className="form-control"
+                id="InputBookLink"
+                placeholder="Book Link"
+                ref={bookLinkRef}
+              />
+            </div>
+
+            <div className="mb-3">
+              <label htmlFor="InputDownloadBook" className="form-label">
+                Download Book Link
+              </label>
+              <input
+                required
+                type="text"
+                className="form-control"
+                id="InputDownloadBook"
+                placeholder="Download Book Link"
+                ref={downloadBookLinkRef}
+              />
+            </div>
             {suceesMsg && (
               <div className="alert alert-success text-center" role="alert">
                 <strong>Book successfully added!</strong>
               </div>
             )}
-            <button type="submit" className="btn bookSubmit">
+            <button type="submit" className="btn bookSubmit mt-2">
               Submit
             </button>
           </form>
