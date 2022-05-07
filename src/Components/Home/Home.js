@@ -40,6 +40,8 @@ const Home = () => {
     setFinalInputData(inputData);
     if (finalInputData != data) {
       setErrorMessage(true);
+    } else {
+      setErrorMessage(false);
     }
   };
 
