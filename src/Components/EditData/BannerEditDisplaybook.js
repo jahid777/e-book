@@ -1,4 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const BannerEditDisplaybook = () => {
   const topImgRef = useRef();
@@ -57,6 +58,10 @@ const BannerEditDisplaybook = () => {
   return (
     <div>
       {/* top banner form */}
+      <Link to="/dashboard" className="back">
+        {" "}
+        <i className="bi bi-skip-backward-fill"></i> Back{" "}
+      </Link>
 
       <form onSubmit={handleTopBannerSubmit}>
         <div className="mb-3 mt-5 container">
