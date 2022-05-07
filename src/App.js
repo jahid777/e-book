@@ -48,13 +48,13 @@ function App() {
           <BannerEditDisplaybook />
         </PrivateRoute>
 
-        <Route path="/books">
+        <PrivateRoute path="/books">
           <BookDisplay />
-        </Route>
+        </PrivateRoute>
 
-        <Route path="/viewPdf/:bookId">
+        <PrivateRoute path="/viewPdf/:bookId">
           <ViewPdf />
-        </Route>
+        </PrivateRoute>
       </Switch>
     </Router>
   );

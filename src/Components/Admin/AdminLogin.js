@@ -9,7 +9,7 @@ const AdminLogin = () => {
   const history = useHistory();
 
   const emaildata = "admin@gmail.com";
-  const passData = "123";
+  const passData = "123admin";
   const handleAdminSubmit = (e) => {
     e.preventDefault();
     // if (adminEmail === emaildata && adminPass === passData) {
