@@ -24,29 +24,34 @@ function App() {
         <PrivateRoute path="/termsCondition">
           <TermsCondition />
         </PrivateRoute>
-        <PrivateRoute path="/addBook">
+
+        <AdminPrivateRoute path="/addBook">
           <AddBook />
-        </PrivateRoute>
-        <PrivateRoute path="/termsConditionEdit">
+        </AdminPrivateRoute>
+
+        <AdminPrivateRoute path="/termsConditionEdit">
           <TermsConditionEdit />
-        </PrivateRoute>
+        </AdminPrivateRoute>
+
         <Route path="/adminLogin">
           <AdminLogin />
         </Route>
+
         <AdminPrivateRoute path="/dashboard">
           <AdminPage />
         </AdminPrivateRoute>
+
         <AdminPrivateRoute path="/bookListEdit">
           <BooklistEdit />
         </AdminPrivateRoute>
 
-        <PrivateRoute path="/frontPageEdit">
+        <AdminPrivateRoute path="/frontPageEdit">
           <FrontPageEdit />
-        </PrivateRoute>
+        </AdminPrivateRoute>
 
-        <PrivateRoute path="/bannerEditDisplaybook">
+        <AdminPrivateRoute path="/bannerEditDisplaybook">
           <BannerEditDisplaybook />
-        </PrivateRoute>
+        </AdminPrivateRoute>
 
         <PrivateRoute path="/books">
           <BookDisplay />
