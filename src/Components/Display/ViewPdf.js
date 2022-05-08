@@ -107,7 +107,7 @@ const ViewPdf = () => {
                       data-bs-toggle="modal"
                       data-bs-target="#staticBackdropSoftCopy"
                     >
-                      Soft Copy
+                      Hard Copy
                     </button>
                     {/* <!-- Modal --> */}
                     <div
@@ -126,7 +126,7 @@ const ViewPdf = () => {
                               className="modal-title"
                               id="staticBackdropLabel"
                             >
-                              Request for the soft copy
+                              Request for the hard copy
                             </h5>
                             <button
                               type="button"
@@ -160,6 +160,23 @@ const ViewPdf = () => {
                               >
                                 <div className="mb-3">
                                   <label
+                                    htmlFor="InputName"
+                                    className="form-label"
+                                  >
+                                    Your Name
+                                  </label>
+                                  <input
+                                    required
+                                    type="text"
+                                    className="form-control"
+                                    id="InputName"
+                                    placeholder="Your Name"
+                                    name="Name"
+                                  />
+                                </div>
+
+                                <div className="mb-3">
+                                  <label
                                     htmlFor="InputEmail"
                                     className="form-label"
                                   >
@@ -172,6 +189,40 @@ const ViewPdf = () => {
                                     id="InputEmail"
                                     placeholder="Email"
                                     name="Email"
+                                  />
+                                </div>
+
+                                <div className="mb-3">
+                                  <label
+                                    htmlFor="InputPhoneNumber"
+                                    className="form-label"
+                                  >
+                                    Your Phone Number
+                                  </label>
+                                  <input
+                                    required
+                                    type="number"
+                                    className="form-control"
+                                    id="InputPhoneNumber"
+                                    placeholder="Your Phone Number"
+                                    name="Phone Number"
+                                  />
+                                </div>
+
+                                <div className="mb-3">
+                                  <label
+                                    htmlFor="InputBmdc"
+                                    className="form-label"
+                                  >
+                                    BMDC Registration Number
+                                  </label>
+                                  <input
+                                    required
+                                    type="text"
+                                    className="form-control"
+                                    id="InputBmdc"
+                                    placeholder="Your BMDC Number"
+                                    name="Bmdc Reg Number"
                                   />
                                 </div>
 
@@ -215,7 +266,7 @@ const ViewPdf = () => {
                                     htmlFor="InputBookNo."
                                     className="form-label"
                                   >
-                                    Book No:
+                                    Book Number:
                                   </label>
                                   <input
                                     required
