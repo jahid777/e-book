@@ -24,7 +24,7 @@ const PopupEditBookList = ({ singleBook }) => {
       bookLink: bookLinkRef?.current?.value,
       downloadBookLink: downloadBookLinkRef?.current?.value,
     };
-    fetch(`http://localhost:5000/updateBook/${_id}`, {
+    fetch(`https://ebookserver.dmcabooks.com/updateBook/${_id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -122,14 +122,14 @@ const PopupEditBookList = ({ singleBook }) => {
                   </div>
                   <div className="mb-3">
                     <label htmlFor="InputISBM" className="form-label">
-                      ISBM:
+                      ISBN:
                     </label>
                     <input
                       required
                       type="text"
                       className="form-control"
                       id="InputISBM"
-                      placeholder="Isbm"
+                      placeholder="Isbn"
                       ref={isbmRef}
                     />
                   </div>

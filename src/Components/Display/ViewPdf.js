@@ -41,7 +41,9 @@ const ViewPdf = () => {
     const fetchProduct = async () => {
       try {
         setLoading(true);
-        const response = await fetch("http://localhost:5000/getBookData");
+        const response = await fetch(
+          "https://ebookserver.dmcabooks.com/getBookData"
+        );
         const data = await response.json();
         setBooks(data);
       } catch (error) {
@@ -79,7 +81,7 @@ const ViewPdf = () => {
                     <p>{bookDt?.authorName}</p>
                   </div>
                   <div className="d-flex">
-                    <strong>Isbm: &nbsp;</strong>
+                    <strong>Isbn: &nbsp;</strong>
                     <p>{bookDt?.isbm}</p>
                   </div>
                   <div className="d-flex">
@@ -249,15 +251,15 @@ const ViewPdf = () => {
                                     htmlFor="InputISBM"
                                     className="form-label"
                                   >
-                                    ISBM:
+                                    ISBN:
                                   </label>
                                   <input
                                     required
                                     type="text"
                                     className="form-control"
                                     id="InputISBM"
-                                    placeholder="Isbm"
-                                    name="Isbm"
+                                    placeholder="Isbn"
+                                    name="Isbn"
                                     defaultValue={bookDt?.isbm}
                                   />
                                 </div>

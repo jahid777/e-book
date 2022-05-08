@@ -16,7 +16,7 @@ const TermsConditionEdit = () => {
       description: showDescription,
     };
     // INSERT A ADMIN AT THE DATABASE
-    fetch("http://localhost:5000/addTermsCondition", {
+    fetch("https://ebookserver.dmcabooks.com/addTermsCondition", {
       method: "POST",
       headers: { "Content-type": "application/json" },
       body: JSON.stringify(termsConditionData),
@@ -34,7 +34,9 @@ const TermsConditionEdit = () => {
     const fetchProduct = async () => {
       try {
         setLoading(true);
-        const response = await fetch("http://localhost:5000/getTermsCondition");
+        const response = await fetch(
+          "https://ebookserver.dmcabooks.com/getTermsCondition"
+        );
         const data = await response.json();
         setTermsAndCondition(data);
       } catch (error) {
@@ -47,7 +49,7 @@ const TermsConditionEdit = () => {
 
   //delete terms and condition
   const handleTermsConditionRemove = (id) => {
-    fetch(`http://localhost:5000/termsConditiondelete/${id}`, {
+    fetch(`https://ebookserver.dmcabooks.com/termsConditiondelete/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())

@@ -26,7 +26,7 @@ const AddBook = () => {
     };
 
     // INSERT top image ADMIN AT THE DATABASE
-    fetch("http://localhost:5000/addBookData", {
+    fetch("https://ebookserver.dmcabooks.com/addBookData", {
       method: "POST",
       headers: { "Content-type": "application/json" },
       body: JSON.stringify(bookData),
@@ -114,14 +114,14 @@ const AddBook = () => {
             </div>
             <div className="mb-3">
               <label htmlFor="InputISBM" className="form-label">
-                ISBM:
+                ISBN:
               </label>
               <input
                 required
                 type="text"
                 className="form-control"
                 id="InputISBM"
-                placeholder="Isbm"
+                placeholder="Isbn"
                 ref={isbmRef}
               />
             </div>

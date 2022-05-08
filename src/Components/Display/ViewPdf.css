@@ -1,19 +1,19 @@
-.viewPdf_page_img{
-    height: 200px;
-    width: 300px;
-    border: 1px solid gray;
+.viewPdf_page_img {
+  height: 200px;
+  width: 300px;
+  border: 1px solid gray;
 }
-.viewPdf_main_section{
-    display: flex;
-    justify-content: center;   
+.viewPdf_main_section {
+  display: flex;
+  justify-content: center;
 }
-.viewPdf_card{
-    border: 1px solid #EDF9F8;
-    padding: 30px;
-    background: #EDF5F9;
+.viewPdf_card {
+  border: 1px solid #edf9f8;
+  padding: 20px;
+  background: #edf5f9;
 }
 
-.viewButton{
-    text-decoration: none !important;
-    color: white !important;
+.viewButton {
+  text-decoration: none !important;
+  color: white !important;
 }

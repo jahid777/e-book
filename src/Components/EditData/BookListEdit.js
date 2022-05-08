@@ -23,7 +23,9 @@ const BooklistEdit = () => {
     const fetchProduct = async () => {
       try {
         setLoading(true);
-        const response = await fetch("http://localhost:5000/getBookData");
+        const response = await fetch(
+          "https://ebookserver.dmcabooks.com/getBookData"
+        );
         const data = await response.json();
         setBooks(data);
       } catch (error) {
@@ -36,7 +38,7 @@ const BooklistEdit = () => {
 
   //delete the book
   const handleBookDelete = (id) => {
-    fetch(`http://localhost:5000/bookDelete/${id}`, {
+    fetch(`https://ebookserver.dmcabooks.com/bookDelete/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
@@ -51,7 +53,7 @@ const BooklistEdit = () => {
     try {
       setLoading(true);
       const response = await fetch(
-        `http://localhost:5000/singleBook/${singleBookId}`
+        `https://ebookserver.dmcabooks.com/singleBook/${singleBookId}`
       );
       const data = await response.json();
       setSingleBook(data);

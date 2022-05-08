@@ -51,7 +51,7 @@ const Home = () => {
       try {
         setLoading(true);
         const response = await fetch(
-          "http://localhost:5000/getFrontPageTopImage"
+          "https://ebookserver.dmcabooks.com/getFrontPageTopImage"
         );
         const data = await response.json();
         setTopImg(data);
@@ -69,7 +69,7 @@ const Home = () => {
       try {
         setLoading(true);
         const response = await fetch(
-          "http://localhost:5000/getFrontPageMiddleImage"
+          "https://ebookserver.dmcabooks.com/getFrontPageMiddleImage"
         );
         const data = await response.json();
         setMidImg(data);
@@ -87,7 +87,7 @@ const Home = () => {
       try {
         setLoading(true);
         const response = await fetch(
-          "http://localhost:5000/getFrontPageDisclaimer"
+          "https://ebookserver.dmcabooks.com/getFrontPageDisclaimer"
         );
         const data = await response.json();
         setDisclaimer(data);

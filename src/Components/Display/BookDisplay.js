@@ -56,7 +56,9 @@ const BookDisplay = () => {
     const fetchProduct = async () => {
       try {
         setLoading(true);
-        const response = await fetch("http://localhost:5000/getBookData");
+        const response = await fetch(
+          "https://ebookserver.dmcabooks.com/getBookData"
+        );
         const data = await response.json();
         setBooks(data);
         setFilteredBooks(data);
@@ -74,7 +76,7 @@ const BookDisplay = () => {
       try {
         setLoading(true);
         const response = await fetch(
-          "http://localhost:5000/DisplayBookTopImage"
+          "https://ebookserver.dmcabooks.com/DisplayBookTopImage"
         );
         const data = await response.json();
         setTopBannerImg(data);
@@ -109,7 +111,7 @@ const BookDisplay = () => {
             <input
               type="text"
               className="searchbar"
-              placeholder="Search book name, authoe name, isbm....."
+              placeholder="Search book name, author name, isbn....."
               onChange={handleSearch}
             />
             <button
