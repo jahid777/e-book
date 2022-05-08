@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import ReactHtmlParser from "react-html-parser";
+import { Link } from "react-router-dom";
 
 const FrontPageEdit = () => {
   const topImgRef = useRef();
@@ -172,6 +173,10 @@ const FrontPageEdit = () => {
 
   return (
     <div>
+      <Link to="/dashboard" className="back">
+        {" "}
+        <i className="bi bi-skip-backward-fill"></i> Back{" "}
+      </Link>
       <h1 style={{ textAlign: "center", marginTop: "8px" }}>
         Home page edit and adding data
       </h1>
