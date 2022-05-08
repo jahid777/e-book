@@ -4,7 +4,6 @@ import AddBook from "./Components/AddData/AddBook";
 import AdminLogin from "./Components/Admin/AdminLogin";
 import AdminPage from "./Components/Admin/AdminPage";
 import AdminPrivateRoute from "./Components/AdminPrivateRoute/AdminPrivateRoute";
-import BookDisplay from "./Components/Display/BookDisplay";
 import ViewPdf from "./Components/Display/ViewPdf";
 import BannerEditDisplaybook from "./Components/EditData/BannerEditDisplaybook";
 import BooklistEdit from "./Components/EditData/BookListEdit";
@@ -13,6 +12,7 @@ import TermsConditionEdit from "./Components/EditData/TermsConditionEdit";
 import Home from "./Components/Home/Home";
 import PrivateRoute from "./Components/PrivateRoute/PrivateRoute";
 import TermsCondition from "./Components/TermsCondition/TermsCondition";
+import BookDisplay from "./Components/Display/BookDisplay";
 
 function App() {
   return (
