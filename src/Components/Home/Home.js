@@ -154,14 +154,12 @@ const Home = () => {
         ))}
       </div>
 
-      <div className="mt-5">
-        <h2 className="text-center mb-5">Disclaimer</h2>
+      <div className="mt-5 disclaimer">
+        <h2 className="text-center mb-5 disclaimerHead">Disclaimer</h2>
         <div className="container mt-3">
           <div>
             {disclaimer?.map((dsData, index) => (
-              <span key={index} style={{ textAlign: "justify" }}>
-                {ReactHtmlParser(dsData?.description)}
-              </span>
+              <span key={index}>{ReactHtmlParser(dsData?.description)}</span>
             ))}
           </div>
         </div>

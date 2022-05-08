@@ -1,7 +1,6 @@
 .headImg {
   width: 100%;
-  height: auto;
-  object-fit: cover;
+  height: 100%;
 }
 .qr-main-section {
   display: flex !important;
@@ -21,11 +20,15 @@
 
 .midImg {
   width: 100%;
-  height: auto;
+  height: 100%;
 }
 .disclaimer {
   text-align: center !important;
+  text-align: justify !important;
+}
+.disclaimerHead {
   border: 1px solid #000;
+  margin: 0 30%;
 }
 .disclaimerHeader {
   font-size: 20px;
@@ -41,7 +44,7 @@
   color: #000000;
   text-decoration: none;
 }
-.errorMessage{
+.errorMessage {
   color: #ff0000;
   text-align: center;
 }
