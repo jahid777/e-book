@@ -4,6 +4,7 @@ import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import "./home.css";
 import ReactHtmlParser from "react-html-parser";
 import { Link } from "react-router-dom";
+import loader from "../../images/Loading.gif";
 
 const Home = () => {
   const [scanResultWebCam, setScanResultWebCam] = useState("");
@@ -101,10 +102,15 @@ const Home = () => {
 
   return (
     <section>
+      {loading && (
+        <div className="loader">
+          <img src={loader} alt="Loading......" />
+        </div>
+      )}
       <div className="homeHead">
         {topImg?.map((dt, index) => (
           <span key={index}>
-            <img src={dt.topImage} alt="loading" className="headImg" />
+            <img src={dt.topImage} alt="" className="headImg" />
           </span>
         ))}
       </div>
@@ -149,7 +155,7 @@ const Home = () => {
       <div className="homeMiddleImg">
         {midImg?.map((dt, index) => (
           <span key={index}>
-            <img src={dt?.middleImage} alt="loading" className="midImg" />
+            <img src={dt?.middleImage} alt="" className="midImg" />
           </span>
         ))}
       </div>

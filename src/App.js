@@ -1,66 +1,74 @@
-import React from "react";
+import { Divider } from "@material-ui/core";
+import React, { Suspense, lazy } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import AddBook from "./Components/AddData/AddBook";
-import AdminLogin from "./Components/Admin/AdminLogin";
-import AdminPage from "./Components/Admin/AdminPage";
 import AdminPrivateRoute from "./Components/AdminPrivateRoute/AdminPrivateRoute";
-import ViewPdf from "./Components/Display/ViewPdf";
-import BannerEditDisplaybook from "./Components/EditData/BannerEditDisplaybook";
-import BooklistEdit from "./Components/EditData/BookListEdit";
-import FrontPageEdit from "./Components/EditData/FrontPageEdit";
-import TermsConditionEdit from "./Components/EditData/TermsConditionEdit";
-import Home from "./Components/Home/Home";
 import PrivateRoute from "./Components/PrivateRoute/PrivateRoute";
-import TermsCondition from "./Components/TermsCondition/TermsCondition";
-import BookDisplay from "./Components/Display/BookDisplay";
+import loading from "./images/Loading.gif";
+
+const Home = React.lazy(() => import("./Components/Home/Home.js"));
+const TermsCondition = React.lazy(() =>
+  import("./Components/TermsCondition/TermsCondition")
+);
+const AddBook = React.lazy(() => import("./Components/AddData/AddBook"));
+const TermsConditionEdit = React.lazy(() =>
+  import("./Components/EditData/TermsConditionEdit")
+);
+const AdminLogin = React.lazy(() => import("./Components/Admin/AdminLogin"));
+const AdminPage = React.lazy(() => import("./Components/Admin/AdminPage"));
+const BooklistEdit = React.lazy(() =>
+  import("./Components/EditData/BookListEdit")
+);
+const FrontPageEdit = React.lazy(() =>
+  import("./Components/EditData/FrontPageEdit")
+);
+const BannerEditDisplaybook = React.lazy(() =>
+  import("./Components/EditData/BannerEditDisplaybook")
+);
+const BookDisplay = React.lazy(() =>
+  import("./Components/Display/BookDisplay")
+);
+const ViewPdf = React.lazy(() => import("./Components/Display/ViewPdf"));
 
 function App() {
   return (
     <Router>
-      <Switch>
-        <Route exact path="/">
-          <Home />
-        </Route>
-        <PrivateRoute path="/termsCondition">
-          <TermsCondition />
-        </PrivateRoute>
+      <Suspense
+        fallback={
+          <div className="loader">
+            <img src={loading} alt="Loading......" />
+          </div>
+        }
+      >
+        <Switch>
+          <Route exact component={Home} path="/" />
 
-        <AdminPrivateRoute path="/addBook">
-          <AddBook />
-        </AdminPrivateRoute>
+          <PrivateRoute component={TermsCondition} path="/termsCondition" />
 
-        <AdminPrivateRoute path="/termsConditionEdit">
-          <TermsConditionEdit />
-        </AdminPrivateRoute>
+          <AdminPrivateRoute component={AddBook} path="/addBook" />
 
-        <Route path="/adminLogin">
-          <AdminLogin />
-        </Route>
+          <AdminPrivateRoute
+            component={TermsConditionEdit}
+            path="/termsConditionEdit"
+          />
 
-        <AdminPrivateRoute path="/dashboard">
-          <AdminPage />
-        </AdminPrivateRoute>
+          <Route component={AdminLogin} path="/adminLogin" />
 
-        <AdminPrivateRoute path="/bookListEdit">
-          <BooklistEdit />
-        </AdminPrivateRoute>
+          <AdminPrivateRoute component={AdminPage} path="/dashboard" />
 
-        <AdminPrivateRoute path="/frontPageEdit">
-          <FrontPageEdit />
-        </AdminPrivateRoute>
+          <AdminPrivateRoute component={BooklistEdit} path="/bookListEdit" />
 
-        <AdminPrivateRoute path="/bannerEditDisplaybook">
-          <BannerEditDisplaybook />
-        </AdminPrivateRoute>
+          <AdminPrivateRoute component={FrontPageEdit} path="/frontPageEdit" />
 
-        <PrivateRoute path="/books">
-          <BookDisplay />
-        </PrivateRoute>
+          <AdminPrivateRoute
+            component={BannerEditDisplaybook}
+            path="/bannerEditDisplaybook"
+          />
 
-        <PrivateRoute path="/viewPdf/:bookId">
-          <ViewPdf />
-        </PrivateRoute>
-      </Switch>
+          <PrivateRoute component={BookDisplay} path="/books" />
+
+          <PrivateRoute component={ViewPdf} path="/viewPdf/:bookId" />
+        </Switch>
+      </Suspense>
     </Router>
   );
 }
