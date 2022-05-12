@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import "./BookDisplay.css";
 import { saveAs } from "file-saver";
 import loader from "../../images/Loading.gif";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/blur.css";
 
 const BookDisplay = () => {
   const [books, setBooks] = useState([]);
@@ -104,11 +106,14 @@ const BookDisplay = () => {
 
       <section className="book_display_header">
         {topBannerImg.map((tpBanner) => (
-          <img
+          <LazyLoadImage
             key={tpBanner._id}
             src={tpBanner?.topdisplayBookBanner}
             alt="Neourology Library"
             className="img-fluid bannerImg"
+            effect="blur"
+            width={"100%"}
+            height={"auto"}
           />
         ))}
       </section>
@@ -170,7 +175,14 @@ const BookDisplay = () => {
                 className="col-12 col-md-4 book_card mb-4"
                 key={bookData?._id}
               >
-                <img src={bookData?.bookImg} alt="" className="bookImage" />
+                <LazyLoadImage
+                  src={bookData?.bookImg}
+                  alt=""
+                  className="bookImage"
+                  effect="blur"
+                  width={"100%"}
+                  height={"auto"}
+                />
                 <span className="b_no">
                   <p>{index + 1}</p>
                 </span>
