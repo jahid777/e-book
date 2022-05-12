@@ -5,6 +5,7 @@ import { saveAs } from "file-saver";
 import loader from "../../images/Loading.gif";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
+import axios from "axios";
 
 const BookDisplay = () => {
   const [books, setBooks] = useState([]);
@@ -55,40 +56,23 @@ const BookDisplay = () => {
   };
 
   //getting books data
+  const bookBaseData = "https://ebookserver.dmcabooks.com/getBookData";
+
   useEffect(() => {
-    const fetchProduct = async () => {
-      try {
-        setLoading(true);
-        const response = await fetch(
-          "https://ebookserver.dmcabooks.com/getBookData"
-        );
-        const data = await response.json();
-        setBooks(data);
-        setFilteredBooks(data);
-      } catch (error) {
-        console.log("err", error);
-      }
-      setLoading(false);
-    };
-    fetchProduct();
+    axios.get(bookBaseData).then((response) => {
+      setBooks(response.data);
+      setFilteredBooks(response.data);
+    });
   }, []);
 
-  //getting the top banner img
+  //Top banner img reading/getting form server
+  const topImgBannerBaseLink =
+    "https://ebookserver.dmcabooks.com/DisplayBookTopImage";
+
   useEffect(() => {
-    const fetchProduct = async () => {
-      try {
-        setLoading(true);
-        const response = await fetch(
-          "https://ebookserver.dmcabooks.com/DisplayBookTopImage"
-        );
-        const data = await response.json();
-        setTopBannerImg(data);
-      } catch (error) {
-        console.log("err", error);
-      }
-      setLoading(false);
-    };
-    fetchProduct();
+    axios.get(topImgBannerBaseLink).then((response) => {
+      setTopBannerImg(response.data);
+    });
   }, []);
 
   //this is for download book
@@ -98,7 +82,7 @@ const BookDisplay = () => {
 
   return (
     <main className="book_display">
-      {loading && filteredBooks?.length === 0 && topBannerImg?.length === 0 && (
+      {filteredBooks?.length === 0 && topBannerImg?.length === 0 && (
         <div className="loader">
           <img src={loader} alt="Loading......" />
         </div>

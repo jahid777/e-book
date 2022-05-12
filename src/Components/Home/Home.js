@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import loader from "../../images/Loading.gif";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
+import axios from "axios";
 
 const Home = () => {
   const [scanResultWebCam, setScanResultWebCam] = useState("");
@@ -15,9 +16,9 @@ const Home = () => {
   const [finalInputData, setFinalInputData] = useState("");
   const [errorMessage, setErrorMessage] = useState(false);
   const history = useHistory();
-  const [topImg, setTopImg] = useState([""]);
-  const [midImg, setMidImg] = useState([""]);
-  const [disclaimer, setDisclaimer] = useState([""]);
+  const [topImg, setTopImg] = useState([]);
+  const [midImg, setMidImg] = useState([]);
+  const [disclaimer, setDisclaimer] = useState([]);
   const [loading, setLoading] = useState(false);
 
   const handleErrorWebCam = (error) => {
@@ -48,63 +49,39 @@ const Home = () => {
     }
   };
 
-  //getting top img form server
+  //Top banner reading/getting form server
+  const topImgBaseLink =
+    "https://ebookserver.dmcabooks.com/getFrontPageTopImage";
+
   useEffect(() => {
-    const fetchProduct = async () => {
-      try {
-        setLoading(true);
-        const response = await fetch(
-          "https://ebookserver.dmcabooks.com/getFrontPageTopImage"
-        );
-        const data = await response.json();
-        setTopImg(data);
-      } catch (error) {
-        console.log("err", error);
-      }
-      setLoading(false);
-    };
-    fetchProduct();
+    axios.get(topImgBaseLink).then((response) => {
+      setTopImg(response.data);
+    });
   }, []);
 
-  //getting mid img form server
+  //middle banner reading/getting form server
+  const middleImgBaseLink =
+    "https://ebookserver.dmcabooks.com/getFrontPageMiddleImage";
+
   useEffect(() => {
-    const fetchProduct = async () => {
-      try {
-        setLoading(true);
-        const response = await fetch(
-          "https://ebookserver.dmcabooks.com/getFrontPageMiddleImage"
-        );
-        const data = await response.json();
-        setMidImg(data);
-      } catch (error) {
-        console.log("err", error);
-      }
-      setLoading(false);
-    };
-    fetchProduct();
+    axios.get(middleImgBaseLink).then((response) => {
+      setMidImg(response.data);
+    });
   }, []);
 
-  //getting disclaimer img form server
+  //disclaimer reading/getting form server
+  const disclaimerBaseLink =
+    "https://ebookserver.dmcabooks.com/getFrontPageDisclaimer";
+
   useEffect(() => {
-    const fetchProduct = async () => {
-      try {
-        setLoading(true);
-        const response = await fetch(
-          "https://ebookserver.dmcabooks.com/getFrontPageDisclaimer"
-        );
-        const data = await response.json();
-        setDisclaimer(data);
-      } catch (error) {
-        console.log("err", error);
-      }
-      setLoading(false);
-    };
-    fetchProduct();
+    axios.get(disclaimerBaseLink).then((response) => {
+      setDisclaimer(response.data);
+    });
   }, []);
 
   return (
     <section>
-      {loading && topImg && disclaimer && (
+      {topImg?.length === 0 && midImg?.length === 0 && disclaimer.length === 0 && (
         <div className="loader">
           <img src={loader} alt="Loading......" />
         </div>

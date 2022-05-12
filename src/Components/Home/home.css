@@ -14,6 +14,11 @@
 .loginForm {
   padding: 0 30%;
 }
+
+.loginInput {
+  border: 1px solid black;
+}
+
 .loginInput:focus {
   box-shadow: none;
 }

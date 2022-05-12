@@ -8,6 +8,7 @@
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.3",
     "@testing-library/user-event": "^12.6.2",
+    "axios": "^0.27.2",
     "file-saver": "^2.0.5",
     "file-server": "^2.2.0",
     "qrcode": "^1.4.4",
