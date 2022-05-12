@@ -102,7 +102,7 @@ const Home = () => {
 
   return (
     <section>
-      {loading && (
+      {loading && topImg && disclaimer && (
         <div className="loader">
           <img src={loader} alt="Loading......" />
         </div>

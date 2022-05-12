@@ -9,7 +9,7 @@ const Home = React.lazy(() => import("./Components/Home/Home.js"));
 const TermsCondition = React.lazy(() =>
   import("./Components/TermsCondition/TermsCondition")
 );
-const AddBook = React.lazy(() => import("./Components/AddData/AddBook"));
+const { AddBook } = React.lazy(() => import("./Components/AddData/AddBook"));
 const TermsConditionEdit = React.lazy(() =>
   import("./Components/EditData/TermsConditionEdit")
 );

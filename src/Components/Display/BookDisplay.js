@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./BookDisplay.css";
 import { saveAs } from "file-saver";
+import loader from "../../images/Loading.gif";
 
 const BookDisplay = () => {
   const [books, setBooks] = useState([]);
@@ -95,6 +96,12 @@ const BookDisplay = () => {
 
   return (
     <main className="book_display">
+      {loading && filteredBooks?.length === 0 && topBannerImg?.length === 0 && (
+        <div className="loader">
+          <img src={loader} alt="Loading......" />
+        </div>
+      )}
+
       <section className="book_display_header">
         {topBannerImg.map((tpBanner) => (
           <img
