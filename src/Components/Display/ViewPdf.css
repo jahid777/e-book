@@ -1,19 +1,37 @@
-.viewPdf_page_img {
-  height: 200px;
-  width: 300px;
-  border: 1px solid gray;
+.viewBtnCard {
+  height: 100vh;
+  position: relative;
 }
-.viewPdf_main_section {
-  display: flex;
-  justify-content: center;
+.viewBtnCardBody {
+  position: relative;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
-.viewPdf_card {
-  border: 1px solid #edf9f8;
-  padding: 20px;
-  background: #edf5f9;
+.card-body {
+  position: absolute;
 }
-
-.viewButton {
+.card-title {
+  font-weight: 600;
+}
+.actionbtn {
+  position: relative;
+  bottom: 0 !important;
+}
+.readButton,
+.hardCopyBtn {
+  background-color: #006600;
+  color: #fff;
+}
+.readButton_txt {
   text-decoration: none !important;
-  color: white !important;
+  color: #fff;
+}
+.readButton_txt:hover {
+  color: #fff;
+}
+.readButton:hover,
+.hardCopyBtn:hover {
+  background-color: #008000;
+  color: #fff;
 }

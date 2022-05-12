@@ -58,256 +58,219 @@ const ViewPdf = () => {
   const selectedBook = books.filter((bk) => bk._id == bookId);
 
   return (
-    <div>
+    <>
       {selectedBook.length > 0 &&
         selectedBook.map((bookDt) => (
-          <span key={bookDt._id}>
-            <section className="viewPdf_main_section container-fluid mt-5">
-              <div className="viewPdf_card">
-                <div className="mb-3">
+          <div className="viewBtnCard">
+            <div
+              class="card mb-3 viewBtnCardBody"
+              style={{ maxWidth: "540px" }}
+              key={bookDt._id}
+            >
+              <div class="row g-0">
+                <div class="col-md-4">
                   <img
-                    className="viewPdf_page_img"
                     src={bookDt?.bookImg}
-                    alt=""
+                    class="img-fluid rounded-start"
+                    alt="..."
                   />
                 </div>
-                <div>
-                  <div className="d-flex">
-                    <strong>Book Name: &nbsp; </strong>
-                    <p>{bookDt?.bookName}</p>
-                  </div>
-                  <div className="d-flex">
-                    <strong>Author Name: &nbsp;</strong>
-                    <p>{bookDt?.authorName}</p>
-                  </div>
-                  <div className="d-flex">
-                    <strong>Isbn: &nbsp;</strong>
-                    <p>{bookDt?.isbm}</p>
-                  </div>
-                  <div className="d-flex">
-                    <strong>Book Number: &nbsp;</strong>
-                    <p>{bookDt?.bookNumber}</p>
-                  </div>
-                  <div className="d-flex justify-content-between mt-4">
-                    <button
-                      className="btn btn-success"
-                      style={{ width: "120px" }}
-                    >
-                      <a
-                        className="viewButton"
-                        href={bookDt.bookLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <p class="card-title">{bookDt?.bookName}</p>
+                    <p class="card-text">{bookDt?.authorName}</p>
+                    <p class="card-text">ISBN: {bookDt?.isbm}</p>
+                    <span class="d-flex justify-content-between actionbtn">
+                      <button className="btn readButton">
+                        <a
+                          className="readButton_txt"
+                          href={bookDt.bookLink}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          Read Book
+                        </a>
+                      </button>
+                      <button
+                        className="btn hardCopyBtn"
+                        data-bs-toggle="modal"
+                        data-bs-target="#staticBackdropSoftCopy"
                       >
-                        Read Book
-                      </a>
-                    </button>{" "}
-                    &nbsp;
+                        Hard Copy
+                      </button>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* <!-- Modal --> */}
+            <div
+              className="modal fade"
+              id="staticBackdropSoftCopy"
+              data-bs-backdrop="static"
+              data-bs-keyboard="false"
+              tabIndex="-1"
+              aria-labelledby="staticBackdropLabel"
+              aria-hidden="true"
+            >
+              <div className="modal-dialog modal-dialog-centered">
+                <div className="modal-content">
+                  <div className="modal-header">
+                    <h5 className="modal-title" id="staticBackdropLabel">
+                      Request for the hard copy
+                    </h5>
                     <button
-                      className="btn btn-success"
-                      style={{ width: "120px" }}
-                      data-bs-toggle="modal"
-                      data-bs-target="#staticBackdropSoftCopy"
-                    >
-                      Hard Copy
-                    </button>
-                    {/* <!-- Modal --> */}
+                      type="button"
+                      className="btn-close"
+                      data-bs-dismiss="modal"
+                      aria-label="Close"
+                    ></button>
+                  </div>
+                  <div
+                    className="modal-body"
+                    style={{
+                      display: "flex",
+                      justifyContent: "center",
+                    }}
+                  >
                     <div
-                      className="modal fade"
-                      id="staticBackdropSoftCopy"
-                      data-bs-backdrop="static"
-                      data-bs-keyboard="false"
-                      tabIndex="-1"
-                      aria-labelledby="staticBackdropLabel"
-                      aria-hidden="true"
+                      className="card"
+                      style={{
+                        width: "100%",
+                        padding: "15px",
+                        textAlign: "justify",
+                      }}
                     >
-                      <div className="modal-dialog modal-dialog-centered">
-                        <div className="modal-content">
-                          <div className="modal-header">
-                            <h5
-                              className="modal-title"
-                              id="staticBackdropLabel"
-                            >
-                              Request for the hard copy
-                            </h5>
-                            <button
-                              type="button"
-                              className="btn-close"
-                              data-bs-dismiss="modal"
-                              aria-label="Close"
-                            ></button>
-                          </div>
-                          <div
-                            className="modal-body"
-                            style={{
-                              display: "flex",
-                              justifyContent: "center",
-                            }}
-                          >
-                            {/* this is modal body */}
-
-                            <div
-                              className="card"
-                              style={{
-                                width: "100%",
-                                padding: "15px",
-                                textAlign: "justify",
-                              }}
-                            >
-                              {/* this is body */}
-                              <form
-                                onSubmit={sendEmail}
-                                ref={form}
-                                className="bookInputForm"
-                              >
-                                <div className="mb-3">
-                                  <label
-                                    htmlFor="InputName"
-                                    className="form-label"
-                                  >
-                                    Your Name
-                                  </label>
-                                  <input
-                                    required
-                                    type="text"
-                                    className="form-control"
-                                    id="InputName"
-                                    placeholder="Your Name"
-                                    name="Name"
-                                  />
-                                </div>
-
-                                <div className="mb-3">
-                                  <label
-                                    htmlFor="InputEmail"
-                                    className="form-label"
-                                  >
-                                    Your Email
-                                  </label>
-                                  <input
-                                    required
-                                    type="email"
-                                    className="form-control"
-                                    id="InputEmail"
-                                    placeholder="Email"
-                                    name="Email"
-                                  />
-                                </div>
-
-                                <div className="mb-3">
-                                  <label
-                                    htmlFor="InputPhoneNumber"
-                                    className="form-label"
-                                  >
-                                    Your Phone Number
-                                  </label>
-                                  <input
-                                    required
-                                    type="number"
-                                    className="form-control"
-                                    id="InputPhoneNumber"
-                                    placeholder="Your Phone Number"
-                                    name="Phone Number"
-                                  />
-                                </div>
-
-                                <div className="mb-3">
-                                  <label
-                                    htmlFor="InputBmdc"
-                                    className="form-label"
-                                  >
-                                    BMDC Registration Number
-                                  </label>
-                                  <input
-                                    required
-                                    type="text"
-                                    className="form-control"
-                                    id="InputBmdc"
-                                    placeholder="Your BMDC Number"
-                                    name="Bmdc Reg Number"
-                                  />
-                                </div>
-
-                                <div className="mb-3">
-                                  <label
-                                    htmlFor="InputBookName"
-                                    className="form-label"
-                                  >
-                                    Book Name:
-                                  </label>
-                                  <input
-                                    required
-                                    type="text"
-                                    className="form-control"
-                                    id="InputBookName"
-                                    placeholder="Book Name"
-                                    name="Book Name"
-                                    defaultValue={bookDt?.bookName}
-                                  />
-                                </div>
-
-                                <div className="mb-3">
-                                  <label
-                                    htmlFor="InputISBM"
-                                    className="form-label"
-                                  >
-                                    ISBN:
-                                  </label>
-                                  <input
-                                    required
-                                    type="text"
-                                    className="form-control"
-                                    id="InputISBM"
-                                    placeholder="Isbn"
-                                    name="Isbn"
-                                    defaultValue={bookDt?.isbm}
-                                  />
-                                </div>
-                                <div className="mb-3">
-                                  <label
-                                    htmlFor="InputBookNo."
-                                    className="form-label"
-                                  >
-                                    Book Number:
-                                  </label>
-                                  <input
-                                    required
-                                    type="text"
-                                    className="form-control"
-                                    id="InputBookNo."
-                                    placeholder="Book Number"
-                                    name="Book Number"
-                                    defaultValue={bookDt?.bookNumber}
-                                  />
-                                </div>
-
-                                <button
-                                  type="submit"
-                                  className="btn bookSubmit mb-3"
-                                >
-                                  Submit
-                                </button>
-
-                                <strong
-                                  style={{
-                                    color: "green",
-                                  }}
-                                >
-                                  {message}
-                                </strong>
-                              </form>
-                            </div>
-                          </div>
+                      {/* this is body */}
+                      <form
+                        onSubmit={sendEmail}
+                        ref={form}
+                        className="bookInputForm"
+                      >
+                        <div className="mb-3">
+                          <label htmlFor="InputName" className="form-label">
+                            Your Name
+                          </label>
+                          <input
+                            required
+                            type="text"
+                            className="form-control"
+                            id="InputName"
+                            placeholder="Your Name"
+                            name="Name"
+                          />
                         </div>
-                      </div>
+
+                        <div className="mb-3">
+                          <label htmlFor="InputEmail" className="form-label">
+                            Your Email
+                          </label>
+                          <input
+                            required
+                            type="email"
+                            className="form-control"
+                            id="InputEmail"
+                            placeholder="Email"
+                            name="Email"
+                          />
+                        </div>
+
+                        <div className="mb-3">
+                          <label
+                            htmlFor="InputPhoneNumber"
+                            className="form-label"
+                          >
+                            Your Phone Number
+                          </label>
+                          <input
+                            required
+                            type="number"
+                            className="form-control"
+                            id="InputPhoneNumber"
+                            placeholder="Your Phone Number"
+                            name="Phone Number"
+                          />
+                        </div>
+
+                        <div className="mb-3">
+                          <label htmlFor="InputBmdc" className="form-label">
+                            BMDC Registration Number
+                          </label>
+                          <input
+                            required
+                            type="text"
+                            className="form-control"
+                            id="InputBmdc"
+                            placeholder="Your BMDC Number"
+                            name="Bmdc Reg Number"
+                          />
+                        </div>
+
+                        <div className="mb-3">
+                          <label htmlFor="InputBookName" className="form-label">
+                            Book Name:
+                          </label>
+                          <input
+                            required
+                            type="text"
+                            className="form-control"
+                            id="InputBookName"
+                            placeholder="Book Name"
+                            name="Book Name"
+                            defaultValue={bookDt?.bookName}
+                          />
+                        </div>
+
+                        <div className="mb-3">
+                          <label htmlFor="InputISBM" className="form-label">
+                            ISBN:
+                          </label>
+                          <input
+                            required
+                            type="text"
+                            className="form-control"
+                            id="InputISBM"
+                            placeholder="Isbn"
+                            name="Isbn"
+                            defaultValue={bookDt?.isbm}
+                          />
+                        </div>
+                        <div className="mb-3">
+                          <label htmlFor="InputBookNo." className="form-label">
+                            Book Number:
+                          </label>
+                          <input
+                            required
+                            type="text"
+                            className="form-control"
+                            id="InputBookNo."
+                            placeholder="Book Number"
+                            name="Book Number"
+                            defaultValue={bookDt?.bookNumber}
+                          />
+                        </div>
+
+                        <button type="submit" className="btn bookSubmit mb-3">
+                          Submit
+                        </button>
+
+                        <strong
+                          style={{
+                            color: "green",
+                          }}
+                        >
+                          {message}
+                        </strong>
+                      </form>
                     </div>
                   </div>
                 </div>
               </div>
-            </section>
-          </span>
+            </div>
+          </div>
         ))}
-    </div>
+    </>
   );
 };
 
