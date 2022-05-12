@@ -5,6 +5,8 @@ import "./home.css";
 import ReactHtmlParser from "react-html-parser";
 import { Link } from "react-router-dom";
 import loader from "../../images/Loading.gif";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/blur.css";
 
 const Home = () => {
   const [scanResultWebCam, setScanResultWebCam] = useState("");
@@ -110,7 +112,14 @@ const Home = () => {
       <div className="homeHead">
         {topImg?.map((dt, index) => (
           <span key={index}>
-            <img src={dt.topImage} alt="" className="headImg" />
+            <LazyLoadImage
+              src={dt.topImage}
+              alt=""
+              className="headImg"
+              effect="blur"
+              width={"100%"}
+              height={"auto"}
+            />
           </span>
         ))}
       </div>
@@ -155,7 +164,14 @@ const Home = () => {
       <div className="homeMiddleImg">
         {midImg?.map((dt, index) => (
           <span key={index}>
-            <img src={dt?.middleImage} alt="" className="midImg" />
+            <LazyLoadImage
+              src={dt?.middleImage}
+              alt=""
+              className="midImg"
+              effect="blur"
+              width={"100%"}
+              height={"auto"}
+            />
           </span>
         ))}
       </div>
