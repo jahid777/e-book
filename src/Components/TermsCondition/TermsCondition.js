@@ -8,8 +8,6 @@ const TermsCondition = () => {
   const [lodaing, setLoading] = useState(false);
   const [description, setDescription] = useState([]);
 
-  console.log(description, "hello");
-
   // logout and clear the session stroage
   const handleLogout = () => {
     sessionStorage.setItem("token", "");
