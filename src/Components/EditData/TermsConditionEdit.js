@@ -16,7 +16,7 @@ const TermsConditionEdit = () => {
       description: showDescription,
     };
     // INSERT A ADMIN AT THE DATABASE
-    fetch("https://ebookserver.dmcabooks.com/addTermsCondition", {
+    fetch("https://vast-scrubland-88816.herokuapp.com/addTermsCondition", {
       method: "POST",
       headers: { "Content-type": "application/json" },
       body: JSON.stringify(termsConditionData),
@@ -35,7 +35,7 @@ const TermsConditionEdit = () => {
       try {
         setLoading(true);
         const response = await fetch(
-          "https://ebookserver.dmcabooks.com/getTermsCondition"
+          "https://vast-scrubland-88816.herokuapp.com/getTermsCondition"
         );
         const data = await response.json();
         setTermsAndCondition(data);
@@ -49,9 +49,12 @@ const TermsConditionEdit = () => {
 
   //delete terms and condition
   const handleTermsConditionRemove = (id) => {
-    fetch(`https://ebookserver.dmcabooks.com/termsConditiondelete/${id}`, {
-      method: "DELETE",
-    })
+    fetch(
+      `https://vast-scrubland-88816.herokuapp.com/termsConditiondelete/${id}`,
+      {
+        method: "DELETE",
+      }
+    )
       .then((res) => res.json())
       .then((result) => {
         console.log("deleted successfully");

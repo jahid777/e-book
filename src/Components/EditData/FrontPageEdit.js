@@ -22,7 +22,7 @@ const FrontPageEdit = () => {
       topImage: topImgRef?.current?.value,
     };
     // INSERT top image ADMIN AT THE DATABASE
-    fetch("https://ebookserver.dmcabooks.com/addFrontPageTopImage", {
+    fetch("https://vast-scrubland-88816.herokuapp.com/addFrontPageTopImage", {
       method: "POST",
       headers: { "Content-type": "application/json" },
       body: JSON.stringify(frontPageTopBanner),
@@ -41,11 +41,14 @@ const FrontPageEdit = () => {
       middleImage: middleImgRef?.current?.value,
     };
     // INSERT A middle image AT THE DATABASE
-    fetch("https://ebookserver.dmcabooks.com/addFrontPageMiddleImage", {
-      method: "POST",
-      headers: { "Content-type": "application/json" },
-      body: JSON.stringify(frontPageMiddleBanner),
-    })
+    fetch(
+      "https://vast-scrubland-88816.herokuapp.com/addFrontPageMiddleImage",
+      {
+        method: "POST",
+        headers: { "Content-type": "application/json" },
+        body: JSON.stringify(frontPageMiddleBanner),
+      }
+    )
       .then((res) => res.json())
       .then((result) => {
         if (result) {
@@ -61,7 +64,7 @@ const FrontPageEdit = () => {
     };
 
     // INSERT A disclaimer AT THE DATABASE
-    fetch("https://ebookserver.dmcabooks.com/addFrontPageDisclaimer", {
+    fetch("https://vast-scrubland-88816.herokuapp.com/addFrontPageDisclaimer", {
       method: "POST",
       headers: { "Content-type": "application/json" },
       body: JSON.stringify(frontPageDisclaimer),
@@ -82,7 +85,7 @@ const FrontPageEdit = () => {
       try {
         setLoading(true);
         const response = await fetch(
-          "https://ebookserver.dmcabooks.com/getFrontPageTopImage"
+          "https://vast-scrubland-88816.herokuapp.com/getFrontPageTopImage"
         );
         const data = await response.json();
         setTopImgData(data);
@@ -100,7 +103,7 @@ const FrontPageEdit = () => {
       try {
         setLoading(true);
         const response = await fetch(
-          "https://ebookserver.dmcabooks.com/getFrontPageMiddleImage"
+          "https://vast-scrubland-88816.herokuapp.com/getFrontPageMiddleImage"
         );
         const data = await response.json();
         setMidImgData(data);
@@ -118,7 +121,7 @@ const FrontPageEdit = () => {
       try {
         setLoading(true);
         const response = await fetch(
-          "https://ebookserver.dmcabooks.com/getFrontPageDisclaimer"
+          "https://vast-scrubland-88816.herokuapp.com/getFrontPageDisclaimer"
         );
         const data = await response.json();
         setDisclaimerData(data);
@@ -135,7 +138,7 @@ const FrontPageEdit = () => {
   //for top image  delete
   const handleTopImageRemove = (id) => {
     // console.log('deleted',id);
-    fetch(`https://ebookserver.dmcabooks.com/topImgdelete/${id}`, {
+    fetch(`https://vast-scrubland-88816.herokuapp.com/topImgdelete/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
@@ -148,7 +151,7 @@ const FrontPageEdit = () => {
   //for middle image delete
   const handlemidImageRemove = (id) => {
     // console.log('deleted',id);
-    fetch(`https://ebookserver.dmcabooks.com/middleImgdelete/${id}`, {
+    fetch(`https://vast-scrubland-88816.herokuapp.com/middleImgdelete/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
@@ -161,7 +164,7 @@ const FrontPageEdit = () => {
   //for disclaimer image delete
   const handleDisclaimerRemove = (id) => {
     // console.log('deleted',id);
-    fetch(`https://ebookserver.dmcabooks.com/disclaimerDelete/${id}`, {
+    fetch(`https://vast-scrubland-88816.herokuapp.com/disclaimerDelete/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())

@@ -27,7 +27,7 @@ const TermsCondition = () => {
       try {
         setLoading(true);
         const response = await fetch(
-          "https://ebookserver.dmcabooks.com/getTermsCondition"
+          "https://vast-scrubland-88816.herokuapp.com/getTermsCondition"
         );
         const data = await response.json();
         setDescription(data);

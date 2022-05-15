@@ -56,7 +56,7 @@ const BookDisplay = () => {
   };
 
   //getting books data
-  const bookBaseData = "https://ebookserver.dmcabooks.com/getBookData";
+  const bookBaseData = "https://vast-scrubland-88816.herokuapp.com/getBookData";
 
   useEffect(() => {
     axios.get(bookBaseData).then((response) => {
@@ -67,7 +67,7 @@ const BookDisplay = () => {
 
   //Top banner img reading/getting form server
   const topImgBannerBaseLink =
-    "https://ebookserver.dmcabooks.com/DisplayBookTopImage";
+    "https://vast-scrubland-88816.herokuapp.com/DisplayBookTopImage";
 
   useEffect(() => {
     axios.get(topImgBannerBaseLink).then((response) => {

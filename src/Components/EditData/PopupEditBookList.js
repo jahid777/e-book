@@ -24,7 +24,7 @@ const PopupEditBookList = ({ singleBook }) => {
       bookLink: bookLinkRef?.current?.value,
       downloadBookLink: downloadBookLinkRef?.current?.value,
     };
-    fetch(`https://ebookserver.dmcabooks.com/updateBook/${_id}`, {
+    fetch(`https://vast-scrubland-88816.herokuapp.com/updateBook/${_id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",

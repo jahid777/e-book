@@ -51,7 +51,7 @@ const Home = () => {
 
   //Top banner reading/getting form server
   const topImgBaseLink =
-    "https://ebookserver.dmcabooks.com/getFrontPageTopImage";
+    "https://vast-scrubland-88816.herokuapp.com/getFrontPageTopImage";
 
   useEffect(() => {
     axios.get(topImgBaseLink).then((response) => {
@@ -61,7 +61,7 @@ const Home = () => {
 
   //middle banner reading/getting form server
   const middleImgBaseLink =
-    "https://ebookserver.dmcabooks.com/getFrontPageMiddleImage";
+    "https://vast-scrubland-88816.herokuapp.com/getFrontPageMiddleImage";
 
   useEffect(() => {
     axios.get(middleImgBaseLink).then((response) => {
@@ -71,7 +71,7 @@ const Home = () => {
 
   //disclaimer reading/getting form server
   const disclaimerBaseLink =
-    "https://ebookserver.dmcabooks.com/getFrontPageDisclaimer";
+    "https://vast-scrubland-88816.herokuapp.com/getFrontPageDisclaimer";
 
   useEffect(() => {
     axios.get(disclaimerBaseLink).then((response) => {

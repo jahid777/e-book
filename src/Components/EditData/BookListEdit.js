@@ -24,7 +24,7 @@ const BooklistEdit = () => {
       try {
         setLoading(true);
         const response = await fetch(
-          "https://ebookserver.dmcabooks.com/getBookData"
+          "https://vast-scrubland-88816.herokuapp.com/getBookData"
         );
         const data = await response.json();
         setBooks(data);
@@ -38,7 +38,7 @@ const BooklistEdit = () => {
 
   //delete the book
   const handleBookDelete = (id) => {
-    fetch(`https://ebookserver.dmcabooks.com/bookDelete/${id}`, {
+    fetch(`https://vast-scrubland-88816.herokuapp.com/bookDelete/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
@@ -53,7 +53,7 @@ const BooklistEdit = () => {
     try {
       setLoading(true);
       const response = await fetch(
-        `https://ebookserver.dmcabooks.com/singleBook/${singleBookId}`
+        `https://vast-scrubland-88816.herokuapp.com/singleBook/${singleBookId}`
       );
       const data = await response.json();
       setSingleBook(data);

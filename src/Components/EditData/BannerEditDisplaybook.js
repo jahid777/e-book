@@ -13,7 +13,7 @@ const BannerEditDisplaybook = () => {
       topdisplayBookBanner: topImgRef?.current?.value,
     };
     // INSERT top image ADMIN AT THE DATABASE
-    fetch("https://ebookserver.dmcabooks.com/addDisplayBookTopImage", {
+    fetch("https://vast-scrubland-88816.herokuapp.com/addDisplayBookTopImage", {
       method: "POST",
       headers: { "Content-type": "application/json" },
       body: JSON.stringify(displayBookBanner),
@@ -32,7 +32,7 @@ const BannerEditDisplaybook = () => {
       try {
         setLoading(true);
         const response = await fetch(
-          "https://ebookserver.dmcabooks.com/DisplayBookTopImage"
+          "https://vast-scrubland-88816.herokuapp.com/DisplayBookTopImage"
         );
         const data = await response.json();
         setTopBannerImg(data);
@@ -46,9 +46,12 @@ const BannerEditDisplaybook = () => {
 
   const handleTopImageRemove = (id) => {
     // console.log('deleted',id);
-    fetch(`https://ebookserver.dmcabooks.com/bookDisplayImgdelete/${id}`, {
-      method: "DELETE",
-    })
+    fetch(
+      `https://vast-scrubland-88816.herokuapp.com/bookDisplayImgdelete/${id}`,
+      {
+        method: "DELETE",
+      }
+    )
       .then((res) => res.json())
       .then((result) => {
         console.log("deleted successfully");

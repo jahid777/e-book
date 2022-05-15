@@ -38,7 +38,7 @@ const ViewPdf = () => {
   };
 
   ////getting books data
-  const booksData = "https://ebookserver.dmcabooks.com/getBookData";
+  const booksData = "https://vast-scrubland-88816.herokuapp.com/getBookData";
   useEffect(() => {
     axios.get(booksData).then((response) => {
       setBooks(response.data);
