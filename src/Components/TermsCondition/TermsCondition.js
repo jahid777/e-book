@@ -26,9 +26,9 @@ const TermsCondition = () => {
     const fetchProduct = async () => {
       try {
         setLoading(true);
-        const response = await fetch(
-          "https://vast-scrubland-88816.herokuapp.com/getTermsCondition"
-        );
+
+        const response = await fetch("http://localhost:5000/getTermsCondition");
+
         const data = await response.json();
         setDescription(data);
       } catch (error) {
@@ -37,7 +37,7 @@ const TermsCondition = () => {
       setLoading(false);
     };
     fetchProduct();
-  }, []);
+  }, [description]);
 
   return (
     <div className="container-fluid">

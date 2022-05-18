@@ -56,7 +56,8 @@ const BookDisplay = () => {
   };
 
   //getting books data
-  const bookBaseData = "https://vast-scrubland-88816.herokuapp.com/getBookData";
+
+  const bookBaseData = "http://localhost:5000/getBookData";
 
   useEffect(() => {
     axios.get(bookBaseData).then((response) => {
@@ -66,9 +67,7 @@ const BookDisplay = () => {
   }, []);
 
   //Top banner img reading/getting form server
-  const topImgBannerBaseLink =
-    "https://vast-scrubland-88816.herokuapp.com/DisplayBookTopImage";
-
+  const topImgBannerBaseLink = "http://localhost:5000/DisplayBookTopImage";
   useEffect(() => {
     axios.get(topImgBannerBaseLink).then((response) => {
       setTopBannerImg(response.data);

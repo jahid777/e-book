@@ -50,34 +50,34 @@ const Home = () => {
   };
 
   //Top banner reading/getting form server
-  const topImgBaseLink =
-    "https://vast-scrubland-88816.herokuapp.com/getFrontPageTopImage";
+
+  const topImgBaseLink = "http://localhost:5000/getFrontPageTopImage";
 
   useEffect(() => {
     axios.get(topImgBaseLink).then((response) => {
       setTopImg(response.data);
     });
-  }, []);
+  }, [topImg]);
 
   //middle banner reading/getting form server
-  const middleImgBaseLink =
-    "https://vast-scrubland-88816.herokuapp.com/getFrontPageMiddleImage";
+
+  const middleImgBaseLink = "http://localhost:5000/getFrontPageMiddleImage";
 
   useEffect(() => {
     axios.get(middleImgBaseLink).then((response) => {
       setMidImg(response.data);
     });
-  }, []);
+  }, [midImg]);
 
   //disclaimer reading/getting form server
-  const disclaimerBaseLink =
-    "https://vast-scrubland-88816.herokuapp.com/getFrontPageDisclaimer";
+
+  const disclaimerBaseLink = "http://localhost:5000/getFrontPageDisclaimer";
 
   useEffect(() => {
     axios.get(disclaimerBaseLink).then((response) => {
       setDisclaimer(response.data);
     });
-  }, []);
+  }, [disclaimer]);
 
   return (
     <section>

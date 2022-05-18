@@ -26,7 +26,7 @@ const AddBook = () => {
     };
 
     // INSERT top image ADMIN AT THE DATABASE
-    fetch("https://vast-scrubland-88816.herokuapp.com/addBookData", {
+    fetch("http://localhost:5000/addBookData", {
       method: "POST",
       headers: { "Content-type": "application/json" },
       body: JSON.stringify(bookData),

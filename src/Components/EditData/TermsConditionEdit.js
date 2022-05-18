@@ -16,7 +16,8 @@ const TermsConditionEdit = () => {
       description: showDescription,
     };
     // INSERT A ADMIN AT THE DATABASE
-    fetch("https://vast-scrubland-88816.herokuapp.com/addTermsCondition", {
+
+    fetch("http://localhost:5000/addTermsCondition", {
       method: "POST",
       headers: { "Content-type": "application/json" },
       body: JSON.stringify(termsConditionData),
@@ -34,9 +35,9 @@ const TermsConditionEdit = () => {
     const fetchProduct = async () => {
       try {
         setLoading(true);
-        const response = await fetch(
-          "https://vast-scrubland-88816.herokuapp.com/getTermsCondition"
-        );
+
+        const response = await fetch("http://localhost:5000/getTermsCondition");
+
         const data = await response.json();
         setTermsAndCondition(data);
       } catch (error) {
@@ -49,17 +50,16 @@ const TermsConditionEdit = () => {
 
   //delete terms and condition
   const handleTermsConditionRemove = (id) => {
-    fetch(
-      `https://vast-scrubland-88816.herokuapp.com/termsConditiondelete/${id}`,
-      {
-        method: "DELETE",
-      }
-    )
+    fetch(`http://localhost:5000/termsConditiondelete/${id}`, {
+      method: "DELETE",
+    })
       .then((res) => res.json())
       .then((result) => {
-        console.log("deleted successfully");
+        if (result) {
+          console.log("deleted successfully");
+          window.location.reload();
+        }
       });
-    window.location.reload();
   };
 
   return (

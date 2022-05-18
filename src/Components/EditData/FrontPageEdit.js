@@ -22,7 +22,8 @@ const FrontPageEdit = () => {
       topImage: topImgRef?.current?.value,
     };
     // INSERT top image ADMIN AT THE DATABASE
-    fetch("https://vast-scrubland-88816.herokuapp.com/addFrontPageTopImage", {
+
+    fetch("http://localhost:5000/addFrontPageTopImage", {
       method: "POST",
       headers: { "Content-type": "application/json" },
       body: JSON.stringify(frontPageTopBanner),
@@ -41,14 +42,12 @@ const FrontPageEdit = () => {
       middleImage: middleImgRef?.current?.value,
     };
     // INSERT A middle image AT THE DATABASE
-    fetch(
-      "https://vast-scrubland-88816.herokuapp.com/addFrontPageMiddleImage",
-      {
-        method: "POST",
-        headers: { "Content-type": "application/json" },
-        body: JSON.stringify(frontPageMiddleBanner),
-      }
-    )
+
+    fetch("http://localhost:5000/addFrontPageMiddleImage", {
+      method: "POST",
+      headers: { "Content-type": "application/json" },
+      body: JSON.stringify(frontPageMiddleBanner),
+    })
       .then((res) => res.json())
       .then((result) => {
         if (result) {
@@ -64,7 +63,8 @@ const FrontPageEdit = () => {
     };
 
     // INSERT A disclaimer AT THE DATABASE
-    fetch("https://vast-scrubland-88816.herokuapp.com/addFrontPageDisclaimer", {
+
+    fetch("http://localhost:5000/addFrontPageDisclaimer", {
       method: "POST",
       headers: { "Content-type": "application/json" },
       body: JSON.stringify(frontPageDisclaimer),
@@ -85,7 +85,7 @@ const FrontPageEdit = () => {
       try {
         setLoading(true);
         const response = await fetch(
-          "https://vast-scrubland-88816.herokuapp.com/getFrontPageTopImage"
+          "http://localhost:5000/getFrontPageTopImage"
         );
         const data = await response.json();
         setTopImgData(data);
@@ -95,7 +95,7 @@ const FrontPageEdit = () => {
       setLoading(false);
     };
     fetchProduct();
-  }, []);
+  }, [topImgData]);
 
   //getting mid img form server
   useEffect(() => {
@@ -103,7 +103,7 @@ const FrontPageEdit = () => {
       try {
         setLoading(true);
         const response = await fetch(
-          "https://vast-scrubland-88816.herokuapp.com/getFrontPageMiddleImage"
+          "http://localhost:5000/getFrontPageMiddleImage"
         );
         const data = await response.json();
         setMidImgData(data);
@@ -113,7 +113,7 @@ const FrontPageEdit = () => {
       setLoading(false);
     };
     fetchProduct();
-  }, []);
+  }, [midImgData]);
 
   //getting disclaimer img form server
   useEffect(() => {
@@ -121,7 +121,7 @@ const FrontPageEdit = () => {
       try {
         setLoading(true);
         const response = await fetch(
-          "https://vast-scrubland-88816.herokuapp.com/getFrontPageDisclaimer"
+          "http://localhost:5000/getFrontPageDisclaimer"
         );
         const data = await response.json();
         setDisclaimerData(data);
@@ -131,47 +131,56 @@ const FrontPageEdit = () => {
       setLoading(false);
     };
     fetchProduct();
-  }, []);
+  }, [disclaimerData]);
 
   //for deleting data
 
   //for top image  delete
   const handleTopImageRemove = (id) => {
     // console.log('deleted',id);
-    fetch(`https://vast-scrubland-88816.herokuapp.com/topImgdelete/${id}`, {
+
+    fetch(`http://localhost:5000/topImgdelete/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
       .then((result) => {
-        console.log("deleted successfully");
+        if (result) {
+          console.log("deleted successfully");
+          window.location.reload();
+        }
       });
-    window.location.reload();
   };
 
   //for middle image delete
   const handlemidImageRemove = (id) => {
     // console.log('deleted',id);
-    fetch(`https://vast-scrubland-88816.herokuapp.com/middleImgdelete/${id}`, {
+
+    fetch(`http://localhost:5000/middleImgdelete/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
       .then((result) => {
-        console.log("deleted successfully");
+        if (result) {
+          console.log("deleted successfully");
+          window.location.reload();
+        }
       });
-    window.location.reload();
   };
 
   //for disclaimer image delete
   const handleDisclaimerRemove = (id) => {
     // console.log('deleted',id);
-    fetch(`https://vast-scrubland-88816.herokuapp.com/disclaimerDelete/${id}`, {
+
+    fetch(`http://localhost:5000/disclaimerDelete/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
       .then((result) => {
-        console.log("deleted successfully");
+        if (result) {
+          console.log("deleted successfully");
+          window.location.reload();
+        }
       });
-    window.location.reload();
   };
 
   return (
