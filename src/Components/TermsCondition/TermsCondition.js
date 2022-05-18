@@ -27,7 +27,9 @@ const TermsCondition = () => {
       try {
         setLoading(true);
 
-        const response = await fetch("http://localhost:5000/getTermsCondition");
+        const response = await fetch(
+          "https://ebookserver.dmcabooks.com/getTermsCondition"
+        );
 
         const data = await response.json();
         setDescription(data);

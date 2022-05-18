@@ -51,7 +51,8 @@ const Home = () => {
 
   //Top banner reading/getting form server
 
-  const topImgBaseLink = "http://localhost:5000/getFrontPageTopImage";
+  const topImgBaseLink =
+    "https://ebookserver.dmcabooks.com/getFrontPageTopImage";
 
   useEffect(() => {
     axios.get(topImgBaseLink).then((response) => {
@@ -61,7 +62,8 @@ const Home = () => {
 
   //middle banner reading/getting form server
 
-  const middleImgBaseLink = "http://localhost:5000/getFrontPageMiddleImage";
+  const middleImgBaseLink =
+    "https://ebookserver.dmcabooks.com/getFrontPageMiddleImage";
 
   useEffect(() => {
     axios.get(middleImgBaseLink).then((response) => {
@@ -71,7 +73,8 @@ const Home = () => {
 
   //disclaimer reading/getting form server
 
-  const disclaimerBaseLink = "http://localhost:5000/getFrontPageDisclaimer";
+  const disclaimerBaseLink =
+    "https://ebookserver.dmcabooks.com/getFrontPageDisclaimer";
 
   useEffect(() => {
     axios.get(disclaimerBaseLink).then((response) => {

@@ -38,7 +38,7 @@ const ViewPdf = () => {
   };
 
   ////getting books data
-  const booksData = "http://localhost:5000/getBookData";
+  const booksData = "https://ebookserver.dmcabooks.com/getBookData";
   useEffect(() => {
     axios.get(booksData).then((response) => {
       setBooks(response.data);

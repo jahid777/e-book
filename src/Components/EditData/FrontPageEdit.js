@@ -23,7 +23,7 @@ const FrontPageEdit = () => {
     };
     // INSERT top image ADMIN AT THE DATABASE
 
-    fetch("http://localhost:5000/addFrontPageTopImage", {
+    fetch("https://ebookserver.dmcabooks.com/addFrontPageTopImage", {
       method: "POST",
       headers: { "Content-type": "application/json" },
       body: JSON.stringify(frontPageTopBanner),
@@ -43,7 +43,7 @@ const FrontPageEdit = () => {
     };
     // INSERT A middle image AT THE DATABASE
 
-    fetch("http://localhost:5000/addFrontPageMiddleImage", {
+    fetch("https://ebookserver.dmcabooks.com/addFrontPageMiddleImage", {
       method: "POST",
       headers: { "Content-type": "application/json" },
       body: JSON.stringify(frontPageMiddleBanner),
@@ -64,7 +64,7 @@ const FrontPageEdit = () => {
 
     // INSERT A disclaimer AT THE DATABASE
 
-    fetch("http://localhost:5000/addFrontPageDisclaimer", {
+    fetch("https://ebookserver.dmcabooks.com/addFrontPageDisclaimer", {
       method: "POST",
       headers: { "Content-type": "application/json" },
       body: JSON.stringify(frontPageDisclaimer),
@@ -85,7 +85,7 @@ const FrontPageEdit = () => {
       try {
         setLoading(true);
         const response = await fetch(
-          "http://localhost:5000/getFrontPageTopImage"
+          "https://ebookserver.dmcabooks.com/getFrontPageTopImage"
         );
         const data = await response.json();
         setTopImgData(data);
@@ -103,7 +103,7 @@ const FrontPageEdit = () => {
       try {
         setLoading(true);
         const response = await fetch(
-          "http://localhost:5000/getFrontPageMiddleImage"
+          "https://ebookserver.dmcabooks.com/getFrontPageMiddleImage"
         );
         const data = await response.json();
         setMidImgData(data);
@@ -121,7 +121,7 @@ const FrontPageEdit = () => {
       try {
         setLoading(true);
         const response = await fetch(
-          "http://localhost:5000/getFrontPageDisclaimer"
+          "https://ebookserver.dmcabooks.com/getFrontPageDisclaimer"
         );
         const data = await response.json();
         setDisclaimerData(data);
@@ -139,7 +139,7 @@ const FrontPageEdit = () => {
   const handleTopImageRemove = (id) => {
     // console.log('deleted',id);
 
-    fetch(`http://localhost:5000/topImgdelete/${id}`, {
+    fetch(`https://ebookserver.dmcabooks.com/topImgdelete/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
@@ -155,7 +155,7 @@ const FrontPageEdit = () => {
   const handlemidImageRemove = (id) => {
     // console.log('deleted',id);
 
-    fetch(`http://localhost:5000/middleImgdelete/${id}`, {
+    fetch(`https://ebookserver.dmcabooks.com/middleImgdelete/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
@@ -171,7 +171,7 @@ const FrontPageEdit = () => {
   const handleDisclaimerRemove = (id) => {
     // console.log('deleted',id);
 
-    fetch(`http://localhost:5000/disclaimerDelete/${id}`, {
+    fetch(`https://ebookserver.dmcabooks.com/disclaimerDelete/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())

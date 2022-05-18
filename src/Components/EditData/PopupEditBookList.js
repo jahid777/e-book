@@ -25,7 +25,7 @@ const PopupEditBookList = ({ singleBook }) => {
       downloadBookLink: downloadBookLinkRef?.current?.value,
     };
 
-    fetch(`http://localhost:5000/updateBook/${_id}`, {
+    fetch(`https://ebookserver.dmcabooks.com/updateBook/${_id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",

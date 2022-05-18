@@ -57,7 +57,7 @@ const BookDisplay = () => {
 
   //getting books data
 
-  const bookBaseData = "http://localhost:5000/getBookData";
+  const bookBaseData = "https://ebookserver.dmcabooks.com/getBookData";
 
   useEffect(() => {
     axios.get(bookBaseData).then((response) => {
@@ -67,7 +67,8 @@ const BookDisplay = () => {
   }, []);
 
   //Top banner img reading/getting form server
-  const topImgBannerBaseLink = "http://localhost:5000/DisplayBookTopImage";
+  const topImgBannerBaseLink =
+    "https://ebookserver.dmcabooks.com/DisplayBookTopImage";
   useEffect(() => {
     axios.get(topImgBannerBaseLink).then((response) => {
       setTopBannerImg(response.data);

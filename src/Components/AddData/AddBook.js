@@ -26,7 +26,7 @@ const AddBook = () => {
     };
 
     // INSERT top image ADMIN AT THE DATABASE
-    fetch("http://localhost:5000/addBookData", {
+    fetch("https://ebookserver.dmcabooks.com/addBookData", {
       method: "POST",
       headers: { "Content-type": "application/json" },
       body: JSON.stringify(bookData),

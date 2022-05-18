@@ -14,7 +14,7 @@ const BannerEditDisplaybook = () => {
     };
 
     // INSERT top image ADMIN AT THE DATABASE
-    fetch("http://localhost:5000/addDisplayBookTopImage", {
+    fetch("https://ebookserver.dmcabooks.com/addDisplayBookTopImage", {
       method: "POST",
       headers: { "Content-type": "application/json" },
       body: JSON.stringify(displayBookBanner),
@@ -33,7 +33,7 @@ const BannerEditDisplaybook = () => {
       try {
         setLoading(true);
         const response = await fetch(
-          "http://localhost:5000/DisplayBookTopImage"
+          "https://ebookserver.dmcabooks.com/DisplayBookTopImage"
         );
         const data = await response.json();
         setTopBannerImg(data);
@@ -48,7 +48,7 @@ const BannerEditDisplaybook = () => {
   const handleTopImageRemove = (id) => {
     // console.log('deleted',id);
 
-    fetch(`http://localhost:5000/bookDisplayImgdelete/${id}`, {
+    fetch(`https://ebookserver.dmcabooks.com/bookDisplayImgdelete/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
