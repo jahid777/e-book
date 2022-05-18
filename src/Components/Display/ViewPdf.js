@@ -38,12 +38,12 @@ const ViewPdf = () => {
   };
 
   ////getting books data
-  const booksData = "https://ebookserver.dmcabooks.com/getBookData";
+  const booksData = "http://localhost:5000/getBookData";
   useEffect(() => {
     axios.get(booksData).then((response) => {
       setBooks(response.data);
     });
-  }, []);
+  }, [books]);
 
   //selection the specefic book
   const selectedBook = books.filter((bk) => bk._id == bookId);
@@ -52,7 +52,7 @@ const ViewPdf = () => {
     <>
       {selectedBook.length > 0 &&
         selectedBook?.map((bookDt) => (
-          <div className="viewBtnCard">
+          <div className="viewBtnCard" key={bookDt?._id}>
             <div
               className="card mb-3 viewBtnCardBody"
               style={{ maxWidth: "540px" }}

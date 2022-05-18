@@ -23,9 +23,7 @@ const BooklistEdit = () => {
     const fetchProduct = async () => {
       try {
         setLoading(true);
-        const response = await fetch(
-          "https://ebookserver.dmcabooks.com/getBookData"
-        );
+        const response = await fetch("http://localhost:5000/getBookData");
         const data = await response.json();
         setBooks(data);
       } catch (error) {
@@ -34,18 +32,20 @@ const BooklistEdit = () => {
       setLoading(false);
     };
     fetchProduct();
-  }, []);
+  }, [books]);
 
   //delete the book
   const handleBookDelete = (id) => {
-    fetch(`https://ebookserver.dmcabooks.com/bookDelete/${id}`, {
+    fetch(`http://localhost:5000/bookDelete/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
       .then((result) => {
-        console.log("deleted successfully");
+        if (result) {
+          console.log("deleted successfully");
+          window.location.reload();
+        }
       });
-    window.location.reload();
   };
 
   //getting the single book and send the id to the opoupEditBookList component
@@ -53,7 +53,7 @@ const BooklistEdit = () => {
     try {
       setLoading(true);
       const response = await fetch(
-        `https://ebookserver.dmcabooks.com/singleBook/${singleBookId}`
+        `http://localhost:5000/singleBook/${singleBookId}`
       );
       const data = await response.json();
       setSingleBook(data);

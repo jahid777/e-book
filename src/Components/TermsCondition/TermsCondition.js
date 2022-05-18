@@ -8,8 +8,6 @@ const TermsCondition = () => {
   const [lodaing, setLoading] = useState(false);
   const [description, setDescription] = useState([]);
 
-  console.log(description, "hello");
-
   // logout and clear the session stroage
   const handleLogout = () => {
     sessionStorage.setItem("token", "");
@@ -28,9 +26,7 @@ const TermsCondition = () => {
     const fetchProduct = async () => {
       try {
         setLoading(true);
-        const response = await fetch(
-          "https://ebookserver.dmcabooks.com/getTermsCondition"
-        );
+        const response = await fetch("http://localhost:5000/getTermsCondition");
         const data = await response.json();
         setDescription(data);
       } catch (error) {
@@ -39,7 +35,7 @@ const TermsCondition = () => {
       setLoading(false);
     };
     fetchProduct();
-  }, []);
+  }, [description]);
 
   return (
     <div className="container-fluid">
