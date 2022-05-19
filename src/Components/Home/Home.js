@@ -49,38 +49,26 @@ const Home = () => {
     }
   };
 
-  //Top banner reading/getting form server
-
-  const topImgBaseLink =
-    "https://ebookserver.dmcabooks.com/getFrontPageTopImage";
-
   useEffect(() => {
-    axios.get(topImgBaseLink).then((response) => {
+    //Top banner reading/getting form server
+    axios.get("http://localhost:5000/getFrontPageTopImage").then((response) => {
       setTopImg(response.data);
     });
-  }, [topImg]);
 
-  //middle banner reading/getting form server
+    //middle banner reading/getting form server
+    axios
+      .get("http://localhost:5000/getFrontPageMiddleImage")
+      .then((response) => {
+        setMidImg(response.data);
+      });
 
-  const middleImgBaseLink =
-    "https://ebookserver.dmcabooks.com/getFrontPageMiddleImage";
-
-  useEffect(() => {
-    axios.get(middleImgBaseLink).then((response) => {
-      setMidImg(response.data);
-    });
-  }, [midImg]);
-
-  //disclaimer reading/getting form server
-
-  const disclaimerBaseLink =
-    "https://ebookserver.dmcabooks.com/getFrontPageDisclaimer";
-
-  useEffect(() => {
-    axios.get(disclaimerBaseLink).then((response) => {
-      setDisclaimer(response.data);
-    });
-  }, [disclaimer]);
+    //disclaimer reading/getting form server
+    axios
+      .get("http://localhost:5000/getFrontPageDisclaimer")
+      .then((response) => {
+        setDisclaimer(response.data);
+      });
+  }, []);
 
   return (
     <section>

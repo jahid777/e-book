@@ -95,7 +95,7 @@ const FrontPageEdit = () => {
       setLoading(false);
     };
     fetchProduct();
-  }, [topImgData]);
+  }, []);
 
   //getting mid img form server
   useEffect(() => {
@@ -113,7 +113,7 @@ const FrontPageEdit = () => {
       setLoading(false);
     };
     fetchProduct();
-  }, [midImgData]);
+  }, []);
 
   //getting disclaimer img form server
   useEffect(() => {
@@ -131,7 +131,7 @@ const FrontPageEdit = () => {
       setLoading(false);
     };
     fetchProduct();
-  }, [disclaimerData]);
+  }, []);
 
   //for deleting data
 

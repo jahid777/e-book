@@ -39,7 +39,7 @@ const TermsCondition = () => {
       setLoading(false);
     };
     fetchProduct();
-  }, [description]);
+  }, []);
 
   return (
     <div className="container-fluid">
