@@ -7,7 +7,7 @@ const PopupEditBookList = ({ singleBook }) => {
   const bookImgRef = useRef();
   const bookNameRef = useRef();
   const authorNameRef = useRef();
-  const isbmRef = useRef();
+  const isbnRef = useRef();
   const bookNumberRef = useRef();
   const bookLinkRef = useRef();
   const downloadBookLinkRef = useRef();
@@ -19,7 +19,7 @@ const PopupEditBookList = ({ singleBook }) => {
       bookImg: bookImgRef?.current?.value,
       bookName: bookNameRef?.current?.value,
       authorName: authorNameRef?.current?.value,
-      isbm: isbmRef?.current?.value,
+      isbn: isbnRef?.current?.value,
       bookNumber: bookNumberRef?.current?.value,
       bookLink: bookLinkRef?.current?.value,
       downloadBookLink: downloadBookLinkRef?.current?.value,
@@ -121,16 +121,16 @@ const PopupEditBookList = ({ singleBook }) => {
                     />
                   </div>
                   <div className="mb-3">
-                    <label htmlFor="InputISBM" className="form-label">
+                    <label htmlFor="Inputisbn" className="form-label">
                       ISBN:
                     </label>
                     <input
                       required
                       type="text"
                       className="form-control"
-                      id="InputISBM"
+                      id="Inputisbn"
                       placeholder="Isbn"
-                      ref={isbmRef}
+                      ref={isbnRef}
                     />
                   </div>
                   <div className="mb-3">

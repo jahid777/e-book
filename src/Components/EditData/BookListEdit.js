@@ -32,7 +32,7 @@ const BooklistEdit = () => {
       setLoading(false);
     };
     fetchProduct();
-  }, [books]);
+  }, []);
 
   //delete the book
   const handleBookDelete = (id) => {

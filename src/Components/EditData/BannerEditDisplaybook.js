@@ -51,9 +51,11 @@ const BannerEditDisplaybook = () => {
     })
       .then((res) => res.json())
       .then((result) => {
-        console.log("deleted successfully");
+        if (result) {
+          console.log("deleted successfully");
+          window.location.reload();
+        }
       });
-    window.location.reload();
   };
   return (
     <div>

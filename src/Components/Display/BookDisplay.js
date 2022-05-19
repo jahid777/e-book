@@ -49,7 +49,10 @@ const BookDisplay = () => {
     }
     if (bookCat === "isbn") {
       const filterResult = books.filter((product) =>
-        product?.isbn.toLowerCase().includes(search.toString().toLowerCase())
+        product?.isbn
+          ?.toString()
+          .toLowerCase()
+          .includes(search.toString().toLowerCase())
       );
       setFilteredBooks(filterResult);
     }
@@ -143,8 +146,8 @@ const BookDisplay = () => {
                 type="radio"
                 id="isbn"
                 name="search"
-                value="isbm"
-                onClick={() => filterbookCat("isbm")}
+                value="isbn"
+                onClick={() => filterbookCat("isbn")}
               />
               <label htmlFor="isbn">ISBN Number</label>
             </span>

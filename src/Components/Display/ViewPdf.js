@@ -43,7 +43,7 @@ const ViewPdf = () => {
     axios.get(booksData).then((response) => {
       setBooks(response.data);
     });
-  }, [books]);
+  }, []);
 
   //selection the specefic book
   const selectedBook = books.filter((bk) => bk._id == bookId);
@@ -73,7 +73,7 @@ const ViewPdf = () => {
                   <div className="card-body">
                     <p className="card-title">{bookDt?.bookName}</p>
                     <p className="card-text">{bookDt?.authorName}</p>
-                    <p className="card-text">ISBN: {bookDt?.isbm}</p>
+                    <p className="card-text">ISBN: {bookDt?.isbn}</p>
                     <span className="d-flex justify-content-between actionbtn">
                       <button className="btn readButton">
                         <a
@@ -217,17 +217,17 @@ const ViewPdf = () => {
                         </div>
 
                         <div className="mb-3">
-                          <label htmlFor="InputISBM" className="form-label">
+                          <label htmlFor="InputISBN" className="form-label">
                             ISBN:
                           </label>
                           <input
                             required
                             type="text"
                             className="form-control"
-                            id="InputISBM"
+                            id="InputISBN"
                             placeholder="Isbn"
                             name="Isbn"
-                            defaultValue={bookDt?.isbm}
+                            defaultValue={bookDt?.isbn}
                           />
                         </div>
                         <div className="mb-3">

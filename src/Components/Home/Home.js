@@ -49,32 +49,26 @@ const Home = () => {
     }
   };
 
-  //Top banner reading/getting form server
-  const topImgBaseLink = "http://localhost:5000/getFrontPageTopImage";
-
   useEffect(() => {
-    axios.get(topImgBaseLink).then((response) => {
+    //Top banner reading/getting form server
+    axios.get("http://localhost:5000/getFrontPageTopImage").then((response) => {
       setTopImg(response.data);
     });
-  }, [topImg]);
 
-  //middle banner reading/getting form server
-  const middleImgBaseLink = "http://localhost:5000/getFrontPageMiddleImage";
+    //middle banner reading/getting form server
+    axios
+      .get("http://localhost:5000/getFrontPageMiddleImage")
+      .then((response) => {
+        setMidImg(response.data);
+      });
 
-  useEffect(() => {
-    axios.get(middleImgBaseLink).then((response) => {
-      setMidImg(response.data);
-    });
-  }, [midImg]);
-
-  //disclaimer reading/getting form server
-  const disclaimerBaseLink = "http://localhost:5000/getFrontPageDisclaimer";
-
-  useEffect(() => {
-    axios.get(disclaimerBaseLink).then((response) => {
-      setDisclaimer(response.data);
-    });
-  }, [disclaimer]);
+    //disclaimer reading/getting form server
+    axios
+      .get("http://localhost:5000/getFrontPageDisclaimer")
+      .then((response) => {
+        setDisclaimer(response.data);
+      });
+  }, []);
 
   return (
     <section>
