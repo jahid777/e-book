@@ -51,22 +51,24 @@ const Home = () => {
 
   useEffect(() => {
     //Top banner reading/getting form server
-    axios
-      .get("https://ebookserver.dmcabooks.com/getFrontPageTopImage")
-      .then((response) => {
-        setTopImg(response.data);
-      });
+    axios.get("http://localhost:5000/getFrontPageTopImage").then((response) => {
+      setTopImg(response.data);
+    });
+  }, []);
 
+  useEffect(() => {
     //middle banner reading/getting form server
     axios
-      .get("https://ebookserver.dmcabooks.com/getFrontPageMiddleImage")
+      .get("http://localhost:5000/getFrontPageMiddleImage")
       .then((response) => {
         setMidImg(response.data);
       });
+  }, []);
 
+  useEffect(() => {
     //disclaimer reading/getting form server
     axios
-      .get("https://ebookserver.dmcabooks.com/getFrontPageDisclaimer")
+      .get("http://localhost:5000/getFrontPageDisclaimer")
       .then((response) => {
         setDisclaimer(response.data);
       });
