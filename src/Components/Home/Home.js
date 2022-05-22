@@ -5,8 +5,6 @@ import "./home.css";
 import ReactHtmlParser from "react-html-parser";
 import { Link } from "react-router-dom";
 import loader from "../../images/Loading.gif";
-import { LazyLoadImage } from "react-lazy-load-image-component";
-import "react-lazy-load-image-component/src/effects/blur.css";
 import axios from "axios";
 
 const Home = () => {
@@ -58,7 +56,7 @@ const Home = () => {
           setTopImg(response.data);
         });
     }
-  }, [topImg]);
+  }, [topImg.length, topImg]);
 
   useEffect(() => {
     //middle banner reading/getting form server
@@ -69,7 +67,7 @@ const Home = () => {
           setMidImg(response.data);
         });
     }
-  }, [midImg]);
+  }, [midImg.length, midImg]);
 
   useEffect(() => {
     //disclaimer reading/getting form server
@@ -80,7 +78,7 @@ const Home = () => {
           setDisclaimer(response.data);
         });
     }
-  }, [disclaimer]);
+  }, [disclaimer.length, disclaimer]);
 
   return (
     <section>

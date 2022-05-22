@@ -32,6 +32,7 @@ const FrontPageEdit = () => {
       .then((result) => {
         if (result) {
           setSuccessMsg(true);
+          topImgRef.current.value = "";
         }
       });
   };
@@ -52,12 +53,14 @@ const FrontPageEdit = () => {
       .then((result) => {
         if (result) {
           setSuccessMsg(true);
+          middleImgRef.current.value = "";
         }
       });
   };
 
   //disclimer submission
-  const handleDisclaimerSubmit = () => {
+  const handleDisclaimerSubmit = (e) => {
+    e.preventDefault();
     const frontPageDisclaimer = {
       description: disclaimer,
     };
@@ -73,6 +76,7 @@ const FrontPageEdit = () => {
       .then((result) => {
         if (result) {
           setSuccessMsg(true);
+          window.location.reload();
         }
       });
   };

@@ -11,12 +11,12 @@ const TermsConditionEdit = () => {
   const [termsAndCondition, setTermsAndCondition] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  const handleTermsSubmit = () => {
+  const handleTermsSubmit = (e) => {
+    e.preventDefault();
     const termsConditionData = {
       description: showDescription,
     };
     // INSERT A ADMIN AT THE DATABASE
-
     fetch("https://ebookserver.dmcabooks.com/addTermsCondition", {
       method: "POST",
       headers: { "Content-type": "application/json" },
@@ -26,11 +26,12 @@ const TermsConditionEdit = () => {
       .then((result) => {
         if (result) {
           setSuccessMsg(true);
+          window.location.reload();
         }
       });
   };
 
-  //getting disclaimer img form server
+  //getting terms and conditin form server
   useEffect(() => {
     const fetchProduct = async () => {
       try {
