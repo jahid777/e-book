@@ -58,7 +58,7 @@ const Home = () => {
 
       const timer = setTimeout(() => {
         window.location.reload();
-      }, 500);
+      }, 1000);
       return () => clearTimeout(timer);
     }
   }, [topImg.length]);
@@ -73,7 +73,7 @@ const Home = () => {
         });
       const timer = setTimeout(() => {
         window.location.reload();
-      }, 500);
+      }, 1000);
       return () => clearTimeout(timer);
     }
   }, [midImg.length]);
@@ -88,7 +88,7 @@ const Home = () => {
         });
       const timer = setTimeout(() => {
         window.location.reload();
-      }, 500);
+      }, 1000);
       return () => clearTimeout(timer);
     }
   }, [disclaimer.length]);
