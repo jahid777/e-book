@@ -55,8 +55,13 @@ const Home = () => {
         .then((response) => {
           setTopImg(response.data);
         });
+
+      const timer = setTimeout(() => {
+        window.location.reload();
+      }, 500);
+      return () => clearTimeout(timer);
     }
-  }, [topImg.length, topImg]);
+  }, [topImg.length]);
 
   useEffect(() => {
     //middle banner reading/getting form server
@@ -66,8 +71,12 @@ const Home = () => {
         .then((response) => {
           setMidImg(response.data);
         });
+      const timer = setTimeout(() => {
+        window.location.reload();
+      }, 500);
+      return () => clearTimeout(timer);
     }
-  }, [midImg.length, midImg]);
+  }, [midImg.length]);
 
   useEffect(() => {
     //disclaimer reading/getting form server
@@ -77,8 +86,12 @@ const Home = () => {
         .then((response) => {
           setDisclaimer(response.data);
         });
+      const timer = setTimeout(() => {
+        window.location.reload();
+      }, 500);
+      return () => clearTimeout(timer);
     }
-  }, [disclaimer.length, disclaimer]);
+  }, [disclaimer.length]);
 
   return (
     <section>
