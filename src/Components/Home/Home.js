@@ -51,15 +51,17 @@ const Home = () => {
 
   useEffect(() => {
     //Top banner reading/getting form server
-    axios.get("http://localhost:5000/getFrontPageTopImage").then((response) => {
-      setTopImg(response.data);
-    });
+    axios
+      .get("https://ebookserver.dmcabooks.com/getFrontPageTopImage")
+      .then((response) => {
+        setTopImg(response.data);
+      });
   }, []);
 
   useEffect(() => {
     //middle banner reading/getting form server
     axios
-      .get("http://localhost:5000/getFrontPageMiddleImage")
+      .get("https://ebookserver.dmcabooks.com/getFrontPageMiddleImage")
       .then((response) => {
         setMidImg(response.data);
       });
@@ -68,7 +70,7 @@ const Home = () => {
   useEffect(() => {
     //disclaimer reading/getting form server
     axios
-      .get("http://localhost:5000/getFrontPageDisclaimer")
+      .get("https://ebookserver.dmcabooks.com/getFrontPageDisclaimer")
       .then((response) => {
         setDisclaimer(response.data);
       });
@@ -76,19 +78,32 @@ const Home = () => {
 
   return (
     <section>
-      {topImg.length === 0 && midImg.length === 0 && disclaimer.length === 0 && (
+      {/* {topImg.length === 0 && midImg.length === 0 && disclaimer.length === 0 && (
         <div className="loader">
           <img src={loader} alt="Loading......" />
         </div>
       )}
+
+      {midImg.length === 0 && (
+        <div className="loader">
+          <img src={loader} alt="Loading......" />
+        </div>
+      )}
+
+      {disclaimer.length === 0 && (
+        <div className="loader">
+          <img src={loader} alt="Loading......" />
+        </div>
+      )} */}
+
       <div className="homeHead">
         {topImg?.map((dt, index) => (
           <span key={index}>
-            <LazyLoadImage
+            <img
               src={dt.topImage}
               alt=""
               className="headImg"
-              effect="blur"
+              // effect="blur"
               width={"100%"}
               height={"auto"}
             />
@@ -138,7 +153,7 @@ const Home = () => {
       <div className="homeMiddleImg">
         {midImg?.map((dt, index) => (
           <span key={index}>
-            <LazyLoadImage
+            <img
               src={dt?.middleImage}
               alt=""
               className="midImg"

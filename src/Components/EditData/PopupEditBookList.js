@@ -35,6 +35,13 @@ const PopupEditBookList = ({ singleBook }) => {
       .then((res) => res.json())
       .then((result) => {
         console.log(result);
+        bookImgRef.current.value = "";
+        bookNameRef.current.value = "";
+        authorNameRef.current.value = "";
+        isbnRef.current.value = "";
+        bookNumberRef.current.value = "";
+        bookLinkRef.current.value = "";
+        downloadBookLinkRef.current.value = "";
       });
     // alert("product successfully updated");
     setMessage("Your Product Udpade Successfully");
