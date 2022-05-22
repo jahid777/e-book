@@ -78,7 +78,7 @@ const Home = () => {
 
   return (
     <section>
-      {/* {topImg.length === 0 && midImg.length === 0 && disclaimer.length === 0 && (
+      {topImg.length === 0 && (
         <div className="loader">
           <img src={loader} alt="Loading......" />
         </div>
@@ -94,7 +94,7 @@ const Home = () => {
         <div className="loader">
           <img src={loader} alt="Loading......" />
         </div>
-      )} */}
+      )}
 
       <div className="homeHead">
         {topImg?.map((dt, index) => (
