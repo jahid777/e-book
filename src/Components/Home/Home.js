@@ -51,30 +51,36 @@ const Home = () => {
 
   useEffect(() => {
     //Top banner reading/getting form server
-    axios
-      .get("https://ebookserver.dmcabooks.com/getFrontPageTopImage")
-      .then((response) => {
-        setTopImg(response.data);
-      });
-  }, []);
+    if (topImg.length === 0) {
+      axios
+        .get("https://ebookserver.dmcabooks.com/getFrontPageTopImage")
+        .then((response) => {
+          setTopImg(response.data);
+        });
+    }
+  }, [topImg]);
 
   useEffect(() => {
     //middle banner reading/getting form server
-    axios
-      .get("https://ebookserver.dmcabooks.com/getFrontPageMiddleImage")
-      .then((response) => {
-        setMidImg(response.data);
-      });
-  }, []);
+    if (midImg.length === 0) {
+      axios
+        .get("https://ebookserver.dmcabooks.com/getFrontPageMiddleImage")
+        .then((response) => {
+          setMidImg(response.data);
+        });
+    }
+  }, [midImg]);
 
   useEffect(() => {
     //disclaimer reading/getting form server
-    axios
-      .get("https://ebookserver.dmcabooks.com/getFrontPageDisclaimer")
-      .then((response) => {
-        setDisclaimer(response.data);
-      });
-  }, []);
+    if (disclaimer.length === 0) {
+      axios
+        .get("https://ebookserver.dmcabooks.com/getFrontPageDisclaimer")
+        .then((response) => {
+          setDisclaimer(response.data);
+        });
+    }
+  }, [disclaimer]);
 
   return (
     <section>
