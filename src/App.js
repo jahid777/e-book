@@ -13,6 +13,7 @@ import TermsConditionEdit from "./Components/EditData/TermsConditionEdit";
 import Home from "./Components/Home/Home";
 import PrivateRoute from "./Components/PrivateRoute/PrivateRoute";
 import TermsCondition from "./Components/TermsCondition/TermsCondition";
+import NotFound from "./Components/NotFound/NotFound";
 
 function App() {
   return (
@@ -65,6 +66,10 @@ function App() {
         <PrivateRoute path="/viewPdf/:bookId">
           <ViewPdf />
         </PrivateRoute>
+
+        <Route path="*">
+          <NotFound />
+        </Route>
       </Switch>
     </Router>
   );
