@@ -51,20 +51,22 @@ const Home = () => {
 
   useEffect(() => {
     //Top banner reading/getting form server
-    axios.get("http://localhost:5000/getFrontPageTopImage").then((response) => {
-      setTopImg(response.data);
-    });
+    axios
+      .get("https://ebookserver.dmcabooks.com/getFrontPageTopImage")
+      .then((response) => {
+        setTopImg(response.data);
+      });
 
     //middle banner reading/getting form server
     axios
-      .get("http://localhost:5000/getFrontPageMiddleImage")
+      .get("https://ebookserver.dmcabooks.com/getFrontPageMiddleImage")
       .then((response) => {
         setMidImg(response.data);
       });
 
     //disclaimer reading/getting form server
     axios
-      .get("http://localhost:5000/getFrontPageDisclaimer")
+      .get("https://ebookserver.dmcabooks.com/getFrontPageDisclaimer")
       .then((response) => {
         setDisclaimer(response.data);
       });
