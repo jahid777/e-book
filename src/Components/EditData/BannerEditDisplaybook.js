@@ -23,6 +23,7 @@ const BannerEditDisplaybook = () => {
       .then((result) => {
         if (result) {
           setSuccessMsg(true);
+          topImgRef.current.value = "";
         }
       });
   };

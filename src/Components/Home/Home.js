@@ -5,8 +5,6 @@ import "./home.css";
 import ReactHtmlParser from "react-html-parser";
 import { Link } from "react-router-dom";
 import loader from "../../images/Loading.gif";
-import { LazyLoadImage } from "react-lazy-load-image-component";
-import "react-lazy-load-image-component/src/effects/blur.css";
 import axios from "axios";
 
 const Home = () => {
@@ -51,26 +49,49 @@ const Home = () => {
 
   useEffect(() => {
     //Top banner reading/getting form server
-    axios
-      .get("https://ebookserver.dmcabooks.com/getFrontPageTopImage")
-      .then((response) => {
-        setTopImg(response.data);
-      });
+    if (topImg.length === 0) {
+      axios
+        .get("https://ebookserver.dmcabooks.com/getFrontPageTopImage")
+        .then((response) => {
+          setTopImg(response.data);
+        });
 
+      const timer = setTimeout(() => {
+        window.location.reload();
+      }, 1000);
+      return () => clearTimeout(timer);
+    }
+  }, [topImg.length]);
+
+  useEffect(() => {
     //middle banner reading/getting form server
-    axios
-      .get("https://ebookserver.dmcabooks.com/getFrontPageMiddleImage")
-      .then((response) => {
-        setMidImg(response.data);
-      });
+    if (midImg.length === 0) {
+      axios
+        .get("https://ebookserver.dmcabooks.com/getFrontPageMiddleImage")
+        .then((response) => {
+          setMidImg(response.data);
+        });
+      const timer = setTimeout(() => {
+        window.location.reload();
+      }, 1000);
+      return () => clearTimeout(timer);
+    }
+  }, [midImg.length]);
 
+  useEffect(() => {
     //disclaimer reading/getting form server
-    axios
-      .get("https://ebookserver.dmcabooks.com/getFrontPageDisclaimer")
-      .then((response) => {
-        setDisclaimer(response.data);
-      });
-  }, []);
+    if (disclaimer.length === 0) {
+      axios
+        .get("https://ebookserver.dmcabooks.com/getFrontPageDisclaimer")
+        .then((response) => {
+          setDisclaimer(response.data);
+        });
+      const timer = setTimeout(() => {
+        window.location.reload();
+      }, 1000);
+      return () => clearTimeout(timer);
+    }
+  }, [disclaimer.length]);
 
   return (
     <section>
@@ -79,14 +100,15 @@ const Home = () => {
           <img src={loader} alt="Loading......" />
         </div>
       )}
+
       <div className="homeHead">
         {topImg?.map((dt, index) => (
           <span key={index}>
-            <LazyLoadImage
+            <img
               src={dt.topImage}
               alt=""
               className="headImg"
-              effect="blur"
+              // effect="blur"
               width={"100%"}
               height={"auto"}
             />
@@ -136,7 +158,7 @@ const Home = () => {
       <div className="homeMiddleImg">
         {midImg?.map((dt, index) => (
           <span key={index}>
-            <LazyLoadImage
+            <img
               src={dt?.middleImage}
               alt=""
               className="midImg"

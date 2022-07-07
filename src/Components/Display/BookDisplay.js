@@ -70,13 +70,16 @@ const BookDisplay = () => {
   }, []);
 
   //Top banner img reading/getting form server
-  const topImgBannerBaseLink =
-    "https://ebookserver.dmcabooks.com/DisplayBookTopImage";
+
   useEffect(() => {
-    axios.get(topImgBannerBaseLink).then((response) => {
-      setTopBannerImg(response.data);
-    });
-  }, []);
+    if (topBannerImg.length === 0) {
+      axios
+        .get("https://ebookserver.dmcabooks.com/DisplayBookTopImage")
+        .then((response) => {
+          setTopBannerImg(response.data);
+        });
+    }
+  }, [topBannerImg]);
 
   //this is for download book
   const handleDownload = (download) => {
