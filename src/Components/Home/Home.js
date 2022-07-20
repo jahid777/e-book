@@ -31,7 +31,10 @@ const Home = () => {
   const data = "FvjfsmsvVsbHsbJsban";
   //for login system
   useEffect(() => {
-    if (scanResultWebCam || finalInputData == data) {
+    if (scanResultWebCam == data) {
+      sessionStorage.setItem("token", data);
+      history.push("/termsCondition");
+    } else if (finalInputData == data) {
       sessionStorage.setItem("token", data);
       history.push("/termsCondition");
     }
